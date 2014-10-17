@@ -6,13 +6,13 @@
 	<h3>SIGN UP !</h3>
 
 	<div class="field_container">
-		<label for="email">Email</label>
-		<input type="email" id="email" name="email" value="<?php echo $email; ?>" />
+		<label for="mail">Email</label>
+		<input type="email" id="email" name="mail" value="<?php echo $mail; ?>" />
 	</div>
 
 	<div class="field_container">
-		<label for="username">Username</label>
-		<input type="text" id="username" name="username" value="<?php echo $username; ?>" />
+		<label for="name">Username</label>
+		<input type="text" id="username" name="name" value="<?php echo $name; ?>" />
 	</div>
 
 	<div class="field_container">

@@ -5,8 +5,8 @@
 	include("functions.php");
 
 	//déclaration des variables du formulaire
-	$email 			= "";
-	$username 		= "";
+	$mail 			= "";
+	$name 		= "";
 	$password 		= "";
 	$password_bis 	= "";
 
@@ -16,30 +16,30 @@
 	if (!empty($_POST)){
 		//on écrase les valeurs définies ci-dessus, tout en se protegeant
 		//pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
-		$email 			= strip_tags($_POST['email']);
-		$username 		= strip_tags($_POST['username']);
+		$mail 			= strip_tags($_POST['mail']);
+		$name 		= strip_tags($_POST['name']);
 		$password 		= $_POST['password'];
 		$password_bis 	= $_POST['password_bis'];
 
 		//validation
 
 		//email
-		if (empty($email)){
+		if (empty($mail)){
 			$errors[] = "Please provide an email !";
 		}
-		elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+		elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)){
 			$errors[] = "Your email is not valid !";
 		}
-		elseif (emailExists($email)){
+		elseif (emailExists($mail)){
 			$errors[] = "This email already exists !";
 		}
 
 		//username
-		if (empty($username)){
+		if (empty($name)){
 			$errors[] = "Please provide an username !";
 		}
 		//vérifie si username est présent en bdd
-		elseif (usernameExists($username)){
+		elseif (usernameExists($name)){
 			$errors[] = "This username already exists !";
 		}
 
@@ -72,12 +72,12 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO users (email, username, password, salt, token, dateRegistered, dateModified) 
-				VALUES (:email, :username, :password, :salt, :token, NOW(), NOW())";
+			$sql = "INSERT INTO user (name, mail, password, salt, token, dateRegistered, dateModified) 
+				VALUES (:name, :mail, :password, :salt, :token, NOW(), NOW())";
 
 			$stmt = $dbh->prepare($sql);
-			$stmt->bindValue(":email", $email);
-			$stmt->bindValue(":username", $username);
+			$stmt->bindValue(":mail", $mail);
+			$stmt->bindValue(":name", $name);
 			$stmt->bindValue(":password", $hashedPassword);
 			$stmt->bindValue(":salt", $salt);
 			$stmt->bindValue(":token", $token);
@@ -86,10 +86,11 @@
 			//@guillaume : rediriger vers le formulaire de login
 		}
 	}
-?>
+include("inc/header.php");
+include("inc/nav.php");
 
-<?php include("inc/top.php"); ?>
+ ?>
 <div class="container">
-<?php include("inc/register_form.php"); ?>
+	<?php include("inc/register_form.php"); ?>
 </div>
-<?php include("inc/bottom.php"); ?>
+<?php include("inc/footer.php"); ?>

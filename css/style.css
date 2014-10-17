@@ -49,6 +49,19 @@ table {
 
 /* fin du reset */
 
+
+body{
+	font: 300 1.3rem/1.3rem Oswald;
+	color: #000;
+}
+.container{
+	text-align: left;
+	width: 980px;
+	zoom: 1;
+	margin: 0 auto;
+}
+
+
 header{
 	color: #fff;
 }
@@ -73,3 +86,19 @@ header{
 .connexion a:hover ,.navigation a:hover{
 	color: #BBB;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************/
+/***************CONNEXION******************/
+/*****************************************/
+

@@ -1,0 +1,65 @@
+form{
+	width: 540px;
+	margin: 30px auto;
+	background-color: #fff;
+	color: #592052;
+	padding: 20px;
+	border-radius: 3px;
+}
+form h3{
+	font: 600 2em/2em Oswald;
+	text-align: center;
+	margin: 20px 0;
+}
+form .field_container{
+	text-align: center;
+}
+
+.field_container input{
+	width:400px;
+	height: 50px;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+input[type="submit"]{
+	width:100px;
+	height: 50px;
+	line-height: 50px;
+	text-transform: uppercase;
+	font-size: 15px;
+	text-align: center;
+	background-color: #592052;
+	color: #fff;
+	border: none;
+	display: block;
+	margin: auto;
+}
+input.recherche{
+	display: inline-block;
+	width: auto;
+	height: 31px;
+	line-height: 31px;
+	padding: 0 10px !important;
+	vertical-align: text-bottom;
+}
+input[type="submit"]:hover{
+	background-color: #9b4390;
+}
+
+#filter_form input[type="submit"]{
+	padding: 5px;
+	text-transform: uppercase;
+	font-size: 15px;
+	text-align: center;
+	background-color: #592052;
+	color: #fff;
+	border: none;
+}
+#filter_form input[type="submit"]:hover{
+	background-color: #9b4390;
+}
+.error li{
+	text-align: center;
+	margin: 10px 0;
+}
+
