@@ -1,6 +1,6 @@
 USER
 -id 
--name
+-1
 -image
 -pseudo
 -mail
