@@ -56,6 +56,7 @@ body{
 	color: #000;
 }
 h1{
+	margin: 15px 0;
 	text-transform: uppercase;
 	font: 300 2rem/2rem Oswald;
 	text-align: center;
@@ -71,10 +72,13 @@ h3{
 	text-align: center;
 }
 
+.clearboth{
+	clear: both;
+}
+
 /************ HEADER  *******************/
 header{
 	background-color: #414a51;
-	width: 100%;
 	color: #fff;
 	padding: 0 20px;
 	font-size: 1em;
@@ -170,4 +174,37 @@ footer{
 }
 
 
+.titrequestion{
+	margin-left: 35px;
+	text-align: left;
+}
 
+
+.borderbottom{
+	height: 1px;
+	width: 100%;
+	border-bottom: 1px solid grey;
+}
+
+.detail{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.note{
+	margin-left: 100px;
+	width: 50px;
+	float: left;
+}
+
+#texteQR{
+	margin-right: 100px;
+	width: 600px;
+	float: right;
+}
+
+#reponse{
+	margin-left: 35px;
+	text-align: left;
+	padding: 20px;
+}
