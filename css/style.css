@@ -50,10 +50,88 @@ table {
 /* fin du reset */
 
 
+/************** BASE  *******************/
 body{
 	font: 300 1.3rem/1.3rem Oswald;
 	color: #000;
 }
+h1{
+	text-transform: uppercase;
+	font: 300 2rem/2rem Oswald;
+	text-align: center;
+}
+h2{
+	text-transform: uppercase;
+	font-size: 20px;
+	text-align: center;
+}
+h3{
+	text-transform: uppercase;
+	font-size: 18px;
+	text-align: center;
+}
+
+/************ HEADER  *******************/
+header{
+	background-color: #414a51;
+	width: 100%;
+	color: #fff;
+	padding: 0 20px;
+	font-size: 1em;
+}
+
+header .connexion{
+	height: 40px;
+}
+.connexion #logo {
+	float: left;
+}
+.connexion #login {
+	float: right;
+}
+
+.connexion a, 
+.navigation a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.connexion a:hover, 
+.navigation a:hover{
+	color: #ccc;
+}
+
+header .navigation{
+	line-height: 40px;
+	height: 40px;
+	clear: both;
+}
+
+.navigation .liens{
+	float: left;
+}
+.navigation .liens a{
+	margin: 0 10px 0 0;
+}
+.navigation #recherche{
+	float: right;
+}
+.navigation #recherche input{
+	position:relative;
+}
+
+
+.loupe:before, .loupe:after{content:''; height:20px; display:block; position:absolute; top:0; left:0; }
+
+.loupe:before{width:20px; border:3px #333 solid; border-radius:100%;-webkit-border-radius:100%;-moz-border-radius:100%;}
+
+.loupe:after{width:7px; background:#333; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg); top:17px; left:24px;}
+
+
+/************ BODY  *******************/
+
+
+
 .container{
 	text-align: left;
 	width: 980px;
@@ -61,83 +139,14 @@ body{
 	margin: 0 auto;
 }
 
-
-header{
-	background-color: #000;
-	width: 100%;
-	color: #fff;
-}
-
-.connexion{
-	height: 30px;
-}
-
-#logo{
-	margin-top: 4px;
-	margin-left: 3%;
-}
-
-.navigation{
-	height: 20px;
-	padding: 5px 10px;
-}
-
-
-.connexion a ,.navigation a{
-	color: #fff;
-	text-decoration: none;
-}
-
-.connexion a:hover ,.navigation a:hover{
-	color: #BBB;
-}
-
-
-
-#login{
-	margin-right: 11px;
-	margin-top: 7px;
-	float: right;
-
-}
-
-#recherche{
-	float: right;
-}
-
-h1{
-	text-transform: uppercase;
-	font-size: 25px;
-}
-
-textarea{
-	resize:none;
-}
-
-form input{
-	width: 600px
-}
-
-form textarea{
-	margin-top: 3px;
-	width: 598px
-}
-
+/************ FOOTER  *******************/
 
 footer{
-
+	clear: both;
 	width: 100%;
 	height: 30px;
 	background-color: #BBB;
-	margin-bottom: 0px;
-
 }
 
-/**#recherche{height:40px; width:40px; display:block; position:relative;} 
 
-.loupe:before, .loupe:after{content:''; height:20px; display:block; position:absolute; top:0; left:0; }
-
-.loupe:before{width:20px; border:3px #333 solid; border-radius:100%;-webkit-border-radius:100%;-moz-border-radius:100%;}
-
-.loupe:after{width:7px; background:#333; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg); top:17px; left:24px;}*/
 
