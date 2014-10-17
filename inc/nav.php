@@ -1,14 +1,20 @@
 <header>
 	<div class="connexion">
-		<img src="">
-		<a href="inc/login_form.php">Connexion</a> / 
-		<a href="inc/register_form.php">Crée un compte</a>
+		<a href="index.php"><img id="logo" src="img/logo.png"></a>
+		<div id="login">
+			<a href="login.php">Connexion</a> / 
+			<a href="register.php">Crée un compte</a>
+		</div>
 	</div>
 	<nav class="navigation">
-		<a href="inc/answer_form.php">Posser une question</a>
-		<a href="profil_list.php">Utilisateurs</a>
-		<a href="">Mots-clé</a>
-		
-		<input type="text" placeholder="Recherche">
+		<div class="liens">
+			<a href="question_form.php">Poser une question</a>
+			<a href="profil_list.php">Utilisateurs</a>
+			<a href="">Mots-clé</a>
+			
+			<div id="recherche" >
+				<input class="loupe" type="text" placeholder="Recherche">
+			</div>
+		</div>
 	</nav>
 </header>
