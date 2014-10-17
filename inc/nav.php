@@ -14,8 +14,9 @@
 			<a href="profil_list.php">Utilisateurs</a>
 			<a href="">Mots-clé</a>	
 		</div>
-		<div id="recherche" >
-			<input class="loupe" type="text" placeholder="Recherche">
+		<div id="recherche">
+			<div class="icon"></div>
+			<input type="search" name="search" value="" placeholder="Recherche">	
 		</div>
 	</nav>
 </header>

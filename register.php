@@ -1,12 +1,13 @@
 <?php
+
 	session_start();
 
 	include("db.php");
 	include("functions.php");
 
 	//déclaration des variables du formulaire
+	$name 			= "";
 	$mail 			= "";
-	$name 		= "";
 	$password 		= "";
 	$password_bis 	= "";
 
@@ -14,10 +15,9 @@
 
 	//formulaire soumis ?
 	if (!empty($_POST)){
-		//on écrase les valeurs définies ci-dessus, tout en se protegeant
-		//pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
+
+		$name 			= strip_tags($_POST['name']);
 		$mail 			= strip_tags($_POST['mail']);
-		$name 		= strip_tags($_POST['name']);
 		$password 		= $_POST['password'];
 		$password_bis 	= $_POST['password_bis'];
 
@@ -25,36 +25,36 @@
 
 		//email
 		if (empty($mail)){
-			$errors[] = "Please provide an email !";
+			$errors[] = "Merci d'indiquer un email !";
 		}
 		elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)){
-			$errors[] = "Your email is not valid !";
+			$errors[] = "Votre email n'est pas valide !";
 		}
 		elseif (emailExists($mail)){
-			$errors[] = "This email already exists !";
+			$errors[] = "Cet email existe déjà !";
 		}
 
 		//username
 		if (empty($name)){
-			$errors[] = "Please provide an username !";
+			$errors[] = "Merci d'indiquer votre nom !";
 		}
 		//vérifie si username est présent en bdd
 		elseif (usernameExists($name)){
-			$errors[] = "This username already exists !";
+			$errors[] = "Ce nom existe déjà !";
 		}
 
 		//password
 		if (empty($password)){
-			$errors[] = "Please choose a password !";
+			$errors[] = "Merci d'entrer un mot de passe !";
 		}
 		elseif (empty($password_bis)){
-			$errors[] = "Please confirm your password !";
+			$errors[] = "Merci de confirmer votre mot de passe !";
 		}
 		elseif ($password_bis != $password){
-			$errors[] = "Your passwords do not match !";
+			$errors[] = "Erreur de mot de passe !";
 		}
 		elseif (strlen($password) < 7){
-			$errors[] = "Your password should have at least 7 characters !";
+			$errors[] = "Votre mot de passe doit avoir au moins 7 caractères !";
 		}
 
 
@@ -72,7 +72,7 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO user (name, mail, password, salt, token, dateRegistered, dateModified) 
+			$sql = "INSERT INTO user (name, mail, password, salt, token, dateRegistred, dateModified) 
 				VALUES (:name, :mail, :password, :salt, :token, NOW(), NOW())";
 
 			$stmt = $dbh->prepare($sql);

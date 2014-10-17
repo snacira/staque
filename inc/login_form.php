@@ -6,13 +6,11 @@
 		<h3>SIGN IN !</h3>
 
 		<div class="field_container">
-			<label for="name">Nom</label>
-			<input type="text" id="name" name="name" value="<?php echo $name; ?>" />
+			<input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="Email" />
 		</div>
 
 		<div class="field_container">
-			<label for="password">Mot de passe</label>
-			<input type="password" id="password" name="password" value="<?php echo $password; ?>" />
+			<input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Mot de passe" />
 		</div>
 
 		<?php 
@@ -26,4 +24,7 @@
 		?>
 		<input type="submit" value="SIGN IN !" />
 	</form>
-	<a href="password_reset_1.php" title="Mot de passe oublié ?">Mot de passe oublié ?</a>
+	<div>
+		<a href="password_reset_1.php" title="Mot de passe oublié ?">Mot de passe oublié ?</a>	
+	</div>
+

@@ -1,28 +1,28 @@
 <form action="register.php" id="register_form" method="POST" novalidate>
 
 	<!-- peut servir pour détecter facilement QUEL formulaire a été soumis -->
-	<input type="hidden" name="forn_name" value="register_form" />
+	<input type="hidden" name="form_name" value="register_form" />
 
-	<h3>SIGN UP !</h3>
+	<h3>INSCRIPTION</h3>
 
 	<div class="field_container">
-		<label for="mail">Email</label>
-		<input type="email" id="email" name="mail" value="<?php echo $mail; ?>" />
+		<input type="email" placeholder="Email" id="mail" name="mail" value="<?php if(isset($_GET["email"])) {
+					echo $mail;
+			 		} ?>" 
+		/>
 	</div>
 
 	<div class="field_container">
-		<label for="name">Username</label>
-		<input type="text" id="username" name="name" value="<?php echo $name; ?>" />
+		<input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="Nom"/>
+
 	</div>
 
 	<div class="field_container">
-		<label for="password">Password</label>
-		<input type="password" id="password" name="password" value="<?php echo $password; ?>" />
+		<input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Mot de passe" />
 	</div>
 
 	<div class="field_container">
-		<label for="password_bis">Again</label>
-		<input type="password" id="password_bis" name="password_bis" value="<?php echo $password_bis; ?>" />
+		<input type="password" id="password_bis" name="password_bis" value="<?php echo $password_bis; ?>" placeholder="Again" />
 	</div>
 	<?php 
 		if (!empty($errors)){
@@ -33,5 +33,5 @@
 			echo '</ul>';
 		}
 	?>
-	<input type="submit" value="SIGN UP !" />
+	<input type="submit" value="J'Y VAIS !" />
 </form>

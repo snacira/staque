@@ -118,14 +118,35 @@ header .navigation{
 }
 .navigation #recherche input{
 	position:relative;
+	padding: 3px 19px 3px 6px;
 }
 
+nav .icon{
+	position: relative;
+	width: 8px;
+	height: 3px;
+	background-color: #534441;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	left: 222px;
+	top: 24px;
+	z-index: 1;	
+}
+nav .icon::before {
+	content: "";
+	border: 2px solid #534441;
+	position: absolute;
+	top: -4px;
+	left: -11px;
+	display: block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
 
-.loupe:before, .loupe:after{content:''; height:20px; display:block; position:absolute; top:0; left:0; }
-
-.loupe:before{width:20px; border:3px #333 solid; border-radius:100%;-webkit-border-radius:100%;-moz-border-radius:100%;}
-
-.loupe:after{width:7px; background:#333; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg); top:17px; left:24px;}
 
 
 /************ BODY  *******************/
