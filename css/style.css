@@ -155,14 +155,50 @@ nav .icon::before {
 
 /************ BODY  *******************/
 
-
-
 .container{
 	text-align: left;
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
 }
+
+h1.title{
+	margin-left: 35px;
+	text-align: left;
+}
+
+.borderbottom{
+	height: 1px;
+	width: 100%;
+	border-bottom: 1px solid grey;
+}
+
+.detail{
+	margin-top: 20px;
+}
+
+.note{
+	text-align: center;
+	width: 50px;
+	float: left;
+	margin-top: 20px;
+}
+
+#texteQR{
+	float: left;
+	width: 908px;
+	border-left: 1px solid #ccc;
+	padding-left: 20px;
+	text-align: left;
+	margin-top: 15px;
+}
+
+h2#reponse{
+	text-align: left;
+	padding: 20px;
+	color: #f3ae73;
+}
+
 
 /************ FOOTER  *******************/
 
@@ -174,37 +210,3 @@ footer{
 }
 
 
-.titrequestion{
-	margin-left: 35px;
-	text-align: left;
-}
-
-
-.borderbottom{
-	height: 1px;
-	width: 100%;
-	border-bottom: 1px solid grey;
-}
-
-.detail{
-	margin-top: 20px;
-	text-align: center;
-}
-
-.note{
-	margin-left: 100px;
-	width: 50px;
-	float: left;
-}
-
-#texteQR{
-	margin-right: 100px;
-	width: 600px;
-	float: right;
-}
-
-#reponse{
-	margin-left: 35px;
-	text-align: left;
-	padding: 20px;
-}
