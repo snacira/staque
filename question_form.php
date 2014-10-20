@@ -1,14 +1,54 @@
 <?php 
+	
+	session_start();
+
+	include("db.php");
+	include("functions.php");
+
+	if (!empty($_POST)){
+		$maquestion = addquestion();
+	}
+
 	include("inc/header.php");
-	include("inc/nav.php"); ?>
+	include("inc/nav.php"); 
+	?>
 
-<h1>Poser une question</h1>
+<section class="container">
 
-<form method="post">
-		<p><input type="text" placeholder="Entré votre titre"></p>
-		<p><textarea name="question"placeholder="Poser votre question"></textarea></p>
-		<p><input type="text"placeholder="Choisiez vos mots clé"></p>
-		<p><input type="submit"></p>
-</form>
+	<h1>Poser une question</h1>
+	
+	<form id="formulairedequestion" method="POST">
+			<label>Titre
+				<input class="intext" type="text" name="title" placeholder="Entré votre titre">
+			</label>
+			
+			<label class="questionarea">
+				<textarea name="content" placeholder="Poser votre question"></textarea>
+			</label>
+			
+			<label id="tags">Mots-clé
+				<input class="intext" type="text"placeholder="Choisiez vos mots clé">
+			</label>
+			
+			<label class="submit"><input type="submit"></label>
+	</form>
 
-<? include("inc/footer.php");?>
+</section>
+
+<?php
+
+
+$sql = "SELECT * FROM question";
+$sth = $dbh->prepare($sql);
+$sth->execute();
+
+
+$questions = $sth->fetchAll();
+foreach($questions as $question){
+	echo "<p>".$question["title"]."</p>";
+	echo $question["content"]."<br>";
+}
+
+		?>
+
+<?php include("inc/footer.php");?>

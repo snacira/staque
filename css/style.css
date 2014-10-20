@@ -137,7 +137,7 @@ header .navigation{
 
 
 .container{
-	text-align: left;
+	/*text-align: left;*/
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
@@ -186,4 +186,27 @@ footer{
 	margin-left: 35px;
 	text-align: left;
 	padding: 20px;
+}
+
+
+#formulairedequestion{
+	width: 700px;
+}
+
+.intext{
+	width: 600px;
+	float: right;
+}
+
+.questionarea{
+	margin-top: 20px;
+}
+
+#tags{
+	margin-top: 10px
+}
+
+.submit{
+	float: right;
+	margin-top: 10px;
 }

@@ -62,3 +62,25 @@
 		return false;
 	}
 
+
+
+
+//add question
+
+
+function addquestion(){
+
+global $dbh;
+
+$title = $_POST['title'];
+$content = $_POST['content'];
+
+$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
+			VALUES ('',:title, :content, 999, NOW(), NOW() )";
+
+	$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":title", $title);
+		$stmt->bindValue(":content", $content);
+		$stmt->execute();
+
+}
