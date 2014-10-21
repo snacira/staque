@@ -46,8 +46,15 @@ $sth->execute();
 
 $questions = $sth->fetchAll();
 foreach($questions as $question){
-	echo "<p>".$question["title"]."</p>";
-	echo $question["content"]."<br>";
+	echo 
+		"<div class='Question'>" .
+			"<h3 class='titreQuestion'>" . 
+				$question["title"] . 
+			"</h3>" .
+			"<div class='contenueQuestion'>" 
+				. $question["content"] . 
+			"</div>" .
+		"</div>";
 }
 
 		?>
