@@ -82,6 +82,7 @@ header{
 	color: #fff;
 	padding: 0 20px;
 	font-size: 1em;
+	padding: 10px 0;
 }
 
 header .connexion{
@@ -160,6 +161,8 @@ nav .icon::before {
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
+	background-color: #f3f2f2;
+	padding: 20px;
 }
 
 h1.title{
@@ -225,14 +228,38 @@ h2#reponse{
 	color: #f3ae73;
 }
 
+/*** mon compte ***/
+#account{
+	margin-top: 30px;
+}
+#account p{
+	margin: 10px 0;
+}
+
+#account #infos span:first-child{
+	color: #f3ae73;
+}
+.delete{
+	position: relative;
+	cursor: pointer;
+}
+.delete::before{
+	content: "";
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+}
 
 /************ FOOTER  *******************/
 
 footer{
 	clear: both;
 	width: 100%;
-	height: 30px;
-	background-color: #BBB;
+	height: 100%;
+	background-color: #414a51;
+	margin-top: 30px;
+	color: #fff;
 }
 
 

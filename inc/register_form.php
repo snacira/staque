@@ -16,6 +16,10 @@
 		<input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="Nom"/>
 
 	</div>
+	<div class="field_container">
+		<input type="text" id="pseudo" name="pseudo" value="<?php echo $pseudo; ?>" placeholder="Pseudo"/>
+
+	</div>
 
 	<div class="field_container">
 		<input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Mot de passe" />
