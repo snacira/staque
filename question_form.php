@@ -43,6 +43,7 @@ $sth = $dbh->prepare($sql);
 $sth->execute();
 
 
+
 $questions = $sth->fetchAll();
 foreach($questions as $question){
 	echo "<p>".$question["title"]."</p>";

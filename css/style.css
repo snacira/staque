@@ -122,19 +122,38 @@ header .navigation{
 }
 .navigation #recherche input{
 	position:relative;
+	padding: 3px 19px 3px 6px;
+}
+
+nav .icon{
+	position: relative;
+	width: 8px;
+	height: 3px;
+	background-color: #534441;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	left: 222px;
+	top: 24px;
+	z-index: 1;	
+}
+nav .icon::before {
+	content: "";
+	border: 2px solid #534441;
+	position: absolute;
+	top: -4px;
+	left: -11px;
+	display: block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
 }
 
 
-.loupe:before, .loupe:after{content:''; height:20px; display:block; position:absolute; top:0; left:0; }
-
-.loupe:before{width:20px; border:3px #333 solid; border-radius:100%;-webkit-border-radius:100%;-moz-border-radius:100%;}
-
-.loupe:after{width:7px; background:#333; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg); top:17px; left:24px;}
-
 
 /************ BODY  *******************/
-
-
 
 .container{
 	/*text-align: left;*/
@@ -143,21 +162,10 @@ header .navigation{
 	margin: 0 auto;
 }
 
-/************ FOOTER  *******************/
-
-footer{
-	clear: both;
-	width: 100%;
-	height: 30px;
-	background-color: #BBB;
-}
-
-
-.titrequestion{
+h1.title{
 	margin-left: 35px;
 	text-align: left;
 }
-
 
 .borderbottom{
 	height: 1px;
@@ -167,25 +175,28 @@ footer{
 
 .detail{
 	margin-top: 20px;
-	text-align: center;
 }
 
 .note{
-	margin-left: 100px;
+	text-align: center;
 	width: 50px;
 	float: left;
+	margin-top: 20px;
 }
 
 #texteQR{
-	margin-right: 100px;
-	width: 600px;
-	float: right;
+	float: left;
+	width: 908px;
+	border-left: 1px solid #ccc;
+	padding-left: 20px;
+	text-align: left;
+	margin-top: 15px;
 }
 
-#reponse{
-	margin-left: 35px;
+h2#reponse{
 	text-align: left;
 	padding: 20px;
+<<<<<<< HEAD
 }
 
 
@@ -210,3 +221,19 @@ footer{
 	float: right;
 	margin-top: 10px;
 }
+=======
+	color: #f3ae73;
+}
+
+
+/************ FOOTER  *******************/
+
+footer{
+	clear: both;
+	width: 100%;
+	height: 30px;
+	background-color: #BBB;
+}
+
+
+>>>>>>> eac8b5606d06abab5066d8637d22a10b7f8f14a6
