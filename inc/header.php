@@ -14,7 +14,8 @@
 	tinymce.init({
    			 selector: "textarea",
    			 language : "fr_FR",
-   			 plugins: "code sh4tinymce"
+   			 plugins: "code sh4tinymce emoticons",
+   			 skin : 'custom'
    			
  			});
 	</script>
