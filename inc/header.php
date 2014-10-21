@@ -19,6 +19,16 @@
    			
  			});
 	</script>
+
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<link type="text/css" rel="stylesheet" href="styles/shCoreEmacs.css"/>
+	<script>SyntaxHighlighter.all();</script>
+	<script src="scripts/shBrushXml.js"></script>
+	<script src="scripts/shBrushCss.js"></script>
+	<script src="scripts/shBrushPhp.js"></script>
+	<script src="scripts/shBrushJScript.js"></script>
+
 </head>
 
 <body>
