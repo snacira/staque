@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="field_container">
-		<input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Mot de passe" />
+		<input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Mot de passe (7 caractères min)" />
 	</div>
 
 	<div class="field_container">
