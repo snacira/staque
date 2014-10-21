@@ -4,9 +4,6 @@
 	include("db.php");
 	include("functions.php");
 
-
-
-
 	//récupère nos données depuis la bdd
 	$image = "";
 	$name = "";
@@ -123,7 +120,6 @@ include("inc/nav.php");
 					<span>Sites</span>
 					<input type="text" id="websites" name="websites" value="<?php echo $mesInfosPerso["websites"]; ?>"  placeholder="google.com, free.fr, monsite.com"/>
 				</div>		
-
 			</div>
 		</div>
 		<input type="submit" value="Valider" />

@@ -13,7 +13,7 @@
 	//formulaire soumis ?
 	if (!empty($_POST)){
 
-		$email= $_POST['email'];
+		$mail= $_POST['mail'];
 
 		//vérifier que l'email existe bel et bien
 		$sql = "SELECT mail, name, token FROM user
