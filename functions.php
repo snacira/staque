@@ -75,8 +75,8 @@
 	}
 			
 
-	function getProfilList($id){
-		
+	function getProfilList(){
+
 		$id = "";
 		$image = "";
 		$pseudo = "";
@@ -88,11 +88,6 @@
 
 		$stmt = $dbh->prepare($sql);
 
-		$stmt->bindValue(":id", $id);
-		$stmt->bindValue(":image", $image);
-		$stmt->bindValue(":pseudo", $pseudo);
-		$stmt->bindValue(":location", $location);
-
 		$stmt->execute();
 		$profilsList = $stmt->fetchAll();
 		
@@ -102,26 +97,20 @@
 		return $profilsList;
 	}
 
+	//Ajouter une question
+	function addquestion(){
 
+		global $dbh;
 
+		$title = $_POST['title'];
+		$content = $_POST['content'];
 
+		$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
+				VALUES ('',:title, :content, 999, NOW(), NOW() )";
 
-//add question
+			$stmt = $dbh->prepare($sql);
+				$stmt->bindValue(":title", $title);
+				$stmt->bindValue(":content", $content);
+				$stmt->execute();
 
-
-function addquestion(){
-
-global $dbh;
-
-$title = $_POST['title'];
-$content = $_POST['content'];
-
-$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-			VALUES ('',:title, :content, 999, NOW(), NOW() )";
-
-	$stmt = $dbh->prepare($sql);
-		$stmt->bindValue(":title", $title);
-		$stmt->bindValue(":content", $content);
-		$stmt->execute();
-
-}
+	}
