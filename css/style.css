@@ -157,7 +157,7 @@ nav .icon::before {
 /************ BODY  *******************/
 
 .container{
-	text-align: left;
+	/*text-align: left;*/
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
@@ -199,6 +199,32 @@ h1.title{
 h2#reponse{
 	text-align: left;
 	padding: 20px;
+<<<<<<< HEAD
+}
+
+
+#formulairedequestion{
+	width: 700px;
+}
+
+.intext{
+	width: 600px;
+	float: right;
+}
+
+.questionarea{
+	margin-top: 20px;
+}
+
+#tags{
+	margin-top: 10px
+}
+
+.submit{
+	float: right;
+	margin-top: 10px;
+}
+=======
 	color: #f3ae73;
 }
 
@@ -237,3 +263,4 @@ footer{
 }
 
 
+>>>>>>> eac8b5606d06abab5066d8637d22a10b7f8f14a6

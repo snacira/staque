@@ -16,3 +16,6 @@
 	} catch (PDOException $e) { //attrappe les éventuelles erreurs de connexion
 	    echo 'Erreur de connexion : ' . $e->getMessage();
 	}
+
+
+	
