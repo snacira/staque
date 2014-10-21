@@ -101,16 +101,30 @@
 	function addquestion(){
 
 		global $dbh;
+		global $errors;
 
-		$title = $_POST['title'];
-		$content = $_POST['content'];
+		if (!empty($_POST)){
 
-		$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-				VALUES ('',:title, :content, 999, NOW(), NOW() )";
+			$title = $_POST['title'];
+			$content = $_POST['content'];
 
-			$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":title", $title);
-				$stmt->bindValue(":content", $content);
-				$stmt->execute();
+			if (empty($title)){
+				$errors[] = "Titre manquant !";
+			}
 
+			if (empty($content)){
+				$errors[] = "Veuiller rediger une question !";
+			}
+
+			if (empty($errors)){
+
+				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
+						VALUES ('',:title, :content, 999, NOW(), NOW() )";
+
+				$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":title", $title);
+					$stmt->bindValue(":content", $content);
+					$stmt->execute();
+			}
+		}
 	}

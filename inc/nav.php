@@ -27,9 +27,12 @@
 			<a href="profil_list.php">Utilisateurs</a>
 			<a href="">Mots-clé</a>	
 		</div>
+
 		<div id="recherche">
 			<div class="icon"></div>
-			<input type="search" name="search" value="" placeholder="Recherche">	
+			<form action="recherche.php" id="recherche_form" method="POST" novalidate>
+			<input type="search" name="search" value="" placeholder="Recherche">
+			</form>	
 		</div>
 	</nav>
 </header>
