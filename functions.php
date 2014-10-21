@@ -1,5 +1,11 @@
 <?php
 
+	function userIsLogged(){
+		if (!empty($_SESSION['user'])){
+			return true;
+		}
+		return false;
+	}
 
 	function randomString($length = 50){
 		$chars = "ABCDEFGHIJKLMNOPQRSTRUVWYXZabcdefghijklmnopqrstruvwyxz0123456789";
@@ -38,8 +44,6 @@
 
 	}
 
-	//retourne un booléen, en fonction de si l'email
-	//est présent en bdd
 	function emailExists($mail){
 
 		global $dbh;
@@ -55,10 +59,20 @@
 
 	}
 
-	function userIsLogged(){
-		if (!empty($_SESSION['user'])){
-			return true;
-		}
-		return false;
+	function infosPerso($id){
+
+		global $dbh;
+
+		$sql = "SELECT * FROM user
+				WHERE id = :id";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id", $id);		
+		$stmt->execute();
+		$monCompte = $stmt->fetch();
+
+		return $monCompte;
 	}
+			
+
 

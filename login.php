@@ -6,8 +6,8 @@
 	include("functions.php");
 
 	//déclaration des variables du formulaire
-	$name 		= "";
-	$password 		= "";
+	$pseudo 	= "";
+	$password 	= "";
 
 	$errors = array();
 
@@ -16,14 +16,14 @@
 
 		//on écrase les valeurs définies ci-dessus, tout en se protegeant
 		//pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
-		$name 		= strip_tags($_POST['name']);
-		$password 		= $_POST['password'];
+		$pseudo 		= strip_tags($_POST['pseudo']);
+		$password 	= $_POST['password'];
 
 		//validation
 
 		//username
-		if (empty($name)){
-			$errors[] = "Merci d'ajouter un nom !";
+		if (empty($pseudo)){
+			$errors[] = "Merci d'ajouter un pseudo !";
 		}
 
 		//password
@@ -36,11 +36,11 @@
 			
 			//recherche l'utilisateur en bdd par son username (ou email)
 			$sql = "SELECT * FROM user
-					WHERE name = :login OR mail = :login
+					WHERE pseudo = :login OR mail = :login
 					LIMIT 1";
 
 			$stmt = $dbh->prepare($sql);
-			$stmt->bindValue(":login", $name);
+			$stmt->bindValue(":login", $pseudo);
 			$stmt->execute();
 
 			$user = $stmt->fetch();

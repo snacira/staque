@@ -7,6 +7,7 @@
 
 	//déclaration des variables du formulaire
 	$name 			= "";
+	$pseudo			= "";
 	$mail 			= "";
 	$password 		= "";
 	$password_bis 	= "";
@@ -17,6 +18,7 @@
 	if (!empty($_POST)){
 
 		$name 			= strip_tags($_POST['name']);
+		$pseudo			= strip_tags($_POST['pseudo']);
 		$mail 			= strip_tags($_POST['mail']);
 		$password 		= $_POST['password'];
 		$password_bis 	= $_POST['password_bis'];
@@ -40,6 +42,15 @@
 		}
 		//vérifie si username est présent en bdd
 		elseif (usernameExists($name)){
+			$errors[] = "Ce nom existe déjà !";
+		}
+
+		//username
+		if (empty($pseudo)){
+			$errors[] = "Merci d'indiquer votre nom !";
+		}
+		//vérifie si username est présent en bdd
+		elseif (usernameExists($pseudo)){
 			$errors[] = "Ce nom existe déjà !";
 		}
 
@@ -72,18 +83,21 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO user (name, mail, password, salt, token, dateRegistred, dateModified) 
-				VALUES (:name, :mail, :password, :salt, :token, NOW(), NOW())";
+			$sql = "INSERT INTO user (name, pseudo, mail, password, salt, token, dateRegistred, dateModified) 
+				VALUES (:name, :pseudo, :mail, :password, :salt, :token, NOW(), NOW())";
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":mail", $mail);
+			$stmt->bindValue(":pseudo", $pseudo);
 			$stmt->bindValue(":name", $name);
 			$stmt->bindValue(":password", $hashedPassword);
 			$stmt->bindValue(":salt", $salt);
 			$stmt->bindValue(":token", $token);
 
 			$stmt->execute();
-			//@guillaume : rediriger vers le formulaire de login
+
+		 	header("Location: login.php");
+		 	die();
 		}
 	}
 include("inc/header.php");

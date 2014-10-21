@@ -1,11 +1,4 @@
-form{
-	width: 540px;
-	margin: 30px auto;
-	background-color: #fff;
-	color: #f3ae73;
-	padding: 20px;
-	border-radius: 3px;
-}
+
 form h3{
 	font: 600 2em/2em Oswald;
 	text-align: center;
@@ -55,3 +48,12 @@ input[type="submit"]:hover{
 	font-family: PT Sans;
 }
 
+.forgotPswd{
+	text-align: center;
+	margin: 20px 0;
+	color: #f3ae73;
+	font-weight: 300;
+	font-family: PT Sans;
+	font-size: 0.8em;
+	display: block;
+}

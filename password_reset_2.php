@@ -6,20 +6,20 @@
 	include("functions.php");
 
 	$email = "";
-	if (!empty($_GET['email'])){
-		$email = $_GET['email'];
+	if (!empty($_GET['mail'])){
+		$mail = $_GET['mail'];
 	}		
 	$token = "";
 	if (!empty($_GET['token'])){
 		$token = $_GET['token'];
 	}
 
-	if ($token && $email){
+	if ($token && $mail){
 		//vérifier que les données dans l'url sont valides
-		$sql = "SELECT * FROM users
-				WHERE email = :email AND token = :token";
+		$sql = "SELECT * FROM user
+				WHERE mail = :mail AND token = :token";
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindValue(":email", $email);
+		$stmt->bindValue(":mail", $mail);
 		$stmt->bindValue(":token", $token);
 		$stmt->execute();
 		$foundUser = $stmt->fetch();
@@ -39,7 +39,7 @@
 	if (!empty($_POST)){
 
 		$password 		= $_POST["password"];
-		$email 		= $_POST["email"];
+		$mail 		= $_POST["mail"];
 		$token 		= $_POST["token"];
 		$password_bis 	= $_POST['password_bis'];
 
@@ -60,25 +60,25 @@
 
 		if (empty($errors)){
 			
-			$sql = "UPDATE users 
+			$sql = "UPDATE user 
 					SET password = :password,
 						dateModified = NOW()
-					WHERE email = :email 
+					WHERE mail = :mail 
 					AND token = :token";
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":password", hashPassword($password, $foundUser['salt']));
-			$stmt->bindValue(":email", $email);
+			$stmt->bindValue(":mail", $mail);
 			$stmt->bindValue(":token", $token);
 			if ($stmt->execute()){
-				$sql = "UPDATE users 
+				$sql = "UPDATE user 
 						SET token = :token,
 							dateModified = NOW()
-						WHERE email = :email";
+						WHERE mail = :mail";
 
 				$stmt = $dbh->prepare($sql);
 				$stmt->bindValue(":token", randomString());
-				$stmt->bindValue(":email", $email);
+				$stmt->bindValue(":mail", $mail);
 				if ($stmt->execute()){
 					//log the user automatically
 					$_SESSION['user'] = $foundUser;
@@ -89,7 +89,8 @@
 		}
 	}
 
-	include("inc/top.php");
+	include("inc/header.php");
+	include("inc/nav.php");
 ?>
 <div class="container">
 <form name="yo" action="password_reset_2.php?<?php echo $_SERVER['QUERY_STRING']; ?>" id="password_reset_2" method="POST" novalidate>
@@ -97,7 +98,7 @@
 	<!-- peut servir pour détecter facilement QUEL formulaire a été soumis -->
 	<input type="hidden" name="forn_name" value="password_reset_2" />
 	<input type="hidden" name="token" value="<?= $token ?>" />
-	<input type="hidden" name="email" value="<?= $email ?>" />
+	<input type="hidden" name="mail" value="<?= $mail ?>" />
 
 	<h3>FORGOT YOUR PASSWORD ?</h3>
 
@@ -121,4 +122,4 @@
 	<input type="submit" value="SAVE !" />
 </form>
 </div>
-<?php 	include("inc/bottom.php"); ?>
+<?php 	include("inc/footer.php"); ?>
