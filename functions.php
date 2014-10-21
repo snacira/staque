@@ -75,6 +75,33 @@
 	}
 			
 
+	function getProfilList($id){
+		
+		$id = "";
+		$image = "";
+		$pseudo = "";
+		$location = "";
+
+		global $dbh; 
+
+		$sql = "SELECT id, image, pseudo, location FROM user";
+
+		$stmt = $dbh->prepare($sql);
+
+		$stmt->bindValue(":id", $id);
+		$stmt->bindValue(":image", $image);
+		$stmt->bindValue(":pseudo", $pseudo);
+		$stmt->bindValue(":location", $location);
+
+		$stmt->execute();
+		$profilsList = $stmt->fetchAll();
+		
+		/*echo "<pre>";
+		print_r($profilsList);*/
+
+		return $profilsList;
+	}
+
 
 
 

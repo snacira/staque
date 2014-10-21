@@ -18,8 +18,15 @@ include("inc/nav.php");
 <section class="container">
 
 	<div id="account">
-		<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+		<?php if(empty($mesInfosPerso["image"])) { ?>
 
+			<img src="img/perso10.jpg" alt="avatar" width="90" height="90">
+
+		<?php } else { ?>
+
+			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+
+		<?php } ?>
 		<br>
 		<div id="infos">
 			<p class="login"><span>Pseudo : </span><span><?php echo $mesInfosPerso["pseudo"]; ?></span></p>
@@ -45,7 +52,10 @@ include("inc/nav.php");
 			<br>
 			<p class="activity"><span>Score : </span><span><?php echo $mesInfosPerso["score"]; ?></span></p>
 			<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>
+
+			<p class="activity"><span>Mis à jour le : </span><span><?php echo $mesInfosPerso["dateModified"]; ?></span></p>			
 		</div>
+
 		<div class=""><a href="edit_profil.php" title="Editer">Modifier</a></div>
 	</div>
 

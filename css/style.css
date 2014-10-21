@@ -82,7 +82,7 @@ header{
 	color: #fff;
 	padding: 0 20px;
 	font-size: 1em;
-	padding: 10px 0;
+	padding: 10px;
 }
 
 header .connexion{
@@ -199,7 +199,6 @@ h1.title{
 h2#reponse{
 	text-align: left;
 	padding: 20px;
-<<<<<<< HEAD
 }
 
 
@@ -224,7 +223,7 @@ h2#reponse{
 	float: right;
 	margin-top: 10px;
 }
-=======
+label{
 	color: #f3ae73;
 }
 
@@ -251,6 +250,24 @@ h2#reponse{
 	background-color: red;
 }
 
+/*** liste de profils ***/
+#profil {
+	float: left;
+	margin-right: 40px;
+	font-size: 15px;
+}
+#profil figure, 
+#profil .user-details{
+	float: left;
+}
+#profil h4 {
+	font-size: 17px;
+}
+#profil figure{
+	border: 2px solid #ccc;
+	margin-right: 10px;
+}
+
 /************ FOOTER  *******************/
 
 footer{
@@ -262,5 +279,3 @@ footer{
 	color: #fff;
 }
 
-
->>>>>>> eac8b5606d06abab5066d8637d22a10b7f8f14a6
