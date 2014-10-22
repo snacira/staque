@@ -1,12 +1,36 @@
  <?php
-	
-	
-	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,		content,vues FROM question
-				JOIN user ON question.user_id=user.id 
-				ORDER BY question.id DESC LIMIT 2";
+
+	$numPerPage= 2;
+	$page = 1;	
+
+	if(!empty($_GET["page"])){
+		$page = $_GET["page"];	
+	}
+
+	$direction = "DESC";
+	if(!empty($_GET["dir"])){
+		if($_GET["dir"]==="desc"){
+			$direction = "DESC";
+		}
+	}
+	$offset = ($page-1)*$numPerPage;
+
+	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,	content,vues 
+			FROM question JOIN user ON question.user_id=user.id 
+			ORDER BY question.id $direction LIMIT :offset,$numPerPage";
+
 			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":offset", ($page-1)*2, PDO::PARAM_INT);
 			$stmt->execute();
 			$questions = $stmt->fetchAll();
+
+			//on recup le total des questions
+			$sql = "SELECT COUNT(*) FROM question";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute();
+			$totalNumber = $stmt->fetchColumn();
+			$totalPages = ceil($totalNumber / $numPerPage); //ceil arrondi 
+
 
 ?>
 
@@ -47,13 +71,17 @@
 	</div>
 	<?php } ?>
 
-	<?php if ($page > 1){ ?>
-	<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1; ?>">Page précédente</a>
+	<p>Affichage des questions <?php echo $offset+1; ?> à <?php echo $offset+$numPerPage; ?> sur <?php echo $totalNumber; ?><p>
+
+
+	<?php if($page > 1 ) { ?>
+		<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1; ?>">Page precedente</a>
 	<?php } ?>
 
-	<?php if ($page < $totalPages){ ?>
-	<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1; ?>">Page suivante</a>
+	<?php if($page < $totalPages ) { ?>
+		<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1; ?>">Page suivante</a>
 	<?php } ?>
+
 
 </section>
 
