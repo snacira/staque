@@ -339,6 +339,18 @@ h3.titreQuestion{
 	margin-bottom: 0.5em;
 }
 
+<<<<<<< HEAD
+
+/*fomulaire si deconecter*/
+
+#conectervous{
+	border: 3px solid #f3ae73;
+	background-color: rgba(255, 255, 53, 0.34);
+}
+
+
+=======
+>>>>>>> 9dbfd9c0d7bc6716334c540db63e802305d1c2fa
 /*** mon compte ***/
 
 #account{
@@ -450,3 +462,4 @@ footer{
 	color: #fff;
 }
 /***********************************/
+
