@@ -339,7 +339,6 @@ h3.titreQuestion{
 	margin-bottom: 0.5em;
 }
 
-<<<<<<< HEAD
 
 /*fomulaire si deconecter*/
 
@@ -348,9 +347,6 @@ h3.titreQuestion{
 	background-color: rgba(255, 255, 53, 0.34);
 }
 
-
-=======
->>>>>>> 9dbfd9c0d7bc6716334c540db63e802305d1c2fa
 /*** mon compte ***/
 
 #account{
@@ -391,15 +387,11 @@ h3.titreQuestion{
 }
 
 /** modifier profil **/
-img.bxsliderAvatar{
+img.avatar{
 	border: 5px solid #fff;
 	border-radius: 50%;
 	padding: 7px;
 }
-.selected{
-	border: 5px solid #f3ae73 !important;
-}
-
 	/* custom input file*/
 input[type="file"]{
 	height: 30px;
