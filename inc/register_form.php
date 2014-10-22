@@ -4,6 +4,15 @@
 	<input type="hidden" name="form_name" value="register_form" />
 
 	<h3>INSCRIPTION</h3>
+	<div class="field_container">
+		<ul class="bxslider">	
+							
+			<?php for($i = 1; $i < 13; $i++){
+				echo "<li><img src='img/perso" . $i . ".jpg' class='bxsliderAvatar' alt='avatar' width='90' height='90' ></li>";
+			} ?>
+		</ul>
+		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="">
+	</div>
 
 	<div class="field_container">
 		<input type="email" placeholder="Email" id="mail" name="mail" value="<?php if(isset($_GET["email"])) {

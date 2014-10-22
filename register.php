@@ -1,11 +1,17 @@
 <?php
 	$title = "Staque | Inscription ";
+
 	session_start();
 
 	include("db.php");
 	include("functions.php");
 
+/*	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";*/
+	
 	//déclaration des variables du formulaire
+	$image 			= "";
 	$name 			= "";
 	$pseudo			= "";
 	$mail 			= "";
@@ -13,10 +19,11 @@
 	$password_bis 	= "";
 
 	$errors = array();
-
+	$avatarDefault = "perso10.jpg";
 	//formulaire soumis ?
 	if (!empty($_POST)){
 
+		$image 			= $_POST['defaultAvatar'];
 		$name 			= strip_tags($_POST['name']);
 		$pseudo			= strip_tags($_POST['pseudo']);
 		$mail 			= strip_tags($_POST['mail']);
@@ -64,7 +71,7 @@
 		elseif ($password_bis != $password){
 			$errors[] = "Erreur de mot de passe !";
 		}
-		elseif (strlen($password) < 7){
+		elseif (strlen($password) < 2){
 			$errors[] = "Votre mot de passe doit avoir au moins 7 caractères !";
 		}
 
@@ -83,10 +90,11 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO user (name, pseudo, mail, password, salt, token, dateRegistred, dateModified,score) 
-				VALUES (:name, :pseudo, :mail, :password, :salt, :token, NOW(), NOW(),5)";
+			$sql = "INSERT INTO user (image, name, pseudo, mail, password, salt, token, dateRegistred, dateModified,score) 
+				VALUES (:image, :name, :pseudo, :mail, :password, :salt, :token, NOW(), NOW(),5)";
 
 			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":image", $image);
 			$stmt->bindValue(":mail", $mail);
 			$stmt->bindValue(":pseudo", $pseudo);
 			$stmt->bindValue(":name", $name);
@@ -96,8 +104,25 @@
 
 			$stmt->execute();
 
-		 	header("Location: login.php");
-		 	die();
+			// loguer la personne après l'inscription
+			$sql = "SELECT * FROM user
+					WHERE pseudo = :login OR mail = :login
+					LIMIT 1";
+
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":login", $pseudo);
+			$stmt->execute();
+
+			$user = $stmt->fetch();
+
+			$hashedPassword = hashPassword($password, $user['salt']);
+			if ($hashedPassword === $user['password']){
+				$_SESSION['user'] = $user;
+				header("Location: index.php");
+				die();
+			}
+		 	//header("Location: login.php");
+		 	//die();
 		}
 	}
 include("inc/header.php");

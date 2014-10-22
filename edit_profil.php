@@ -1,5 +1,4 @@
 <?php
-	$title = "Staque | Editer profil ";
 	session_start();
 
 	include("db.php");
@@ -28,13 +27,13 @@
 
 		global $dbh;
 
-		$image 		= $_POST['image'];
+		$image 		= $_POST['defaultAvatar'];
 		$pseudo 	= $_POST['pseudo'];
 		$name 		= $_POST['name'];
 		$mail 		= $_POST['mail'];
 		$birthday 	= $_POST['birthday'];
 		$job 		= $_POST['job'];
-		$Location 	= $_POST['location'];
+		$location 	= $_POST['location'];
 		$lang 		= $_POST['lang'];
 		$websites 	= $_POST['websites'];
 		$id 		= $_SESSION["user"]['id'];
@@ -84,19 +83,30 @@ include("inc/nav.php");
 	<form action="edit_profil.php" id="edit-profil" method="POST" novalidate>
 
 		<h3>Modifier votre profil</h3>
-		<div class="field_container">
-		<?php if(empty($mesInfosPerso["image"])) { ?>
 
-			<img src="img/<?php echo $avatarDefault; ?>" alt="avatar" width="90" height="90">
+		<ul class="bxslider">	
+							
+			<?php for($i = 1; $i < 13; $i++){
+				echo "<li><img src='img/perso" . $i . ".jpg' class='bxsliderAvatar' alt='avatar' width='90' height='90' ></li>";
+			} ?>
+		</ul>
+		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="<?php echo $mesInfosPerso["image"];?>">
+
+<!-- 
+		<label for="image"><input type="file" name="image" value="" class="file" placeholder=""></label> -->
+
+		<div class="field_container">
+<!-- 		<?php if(empty($mesInfosPerso["image"] == $i)) { ?>
+
+			<img src="img/<?php echo $avatarDefault; ?>" class="avatar" alt="avatar" width="90" height="90">
 
 		<?php } else { ?>
 
-			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+			<img src="<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="90" height="90">
 
-		<?php } ?>	
+		<?php } ?>	 -->
 
-			<br>
-			<label for="image"><span>Changer l'image</span><input type="file" name="image" value="" placeholder=""></label>
+
 		</div>
 		<div id="infos">
 			<div class="field_container">
