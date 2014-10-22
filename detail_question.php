@@ -39,14 +39,15 @@
 
 	$sql = "SELECT comment FROM comment
 					JOIN question ON questionOrAnswer_id=question.id 
-					WHERE question.id=:id";
+
+					WHERE question.id=:id AND questionOrAnswer=0";
 					
 				$stmt = $dbh->prepare($sql);
 				$stmt->bindValue(":id",$id);
 				$stmt->execute();
 				$comments = $stmt->fetchAll();
 
-	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated,image FROM answer
+	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated,image,answer.id FROM answer
 					JOIN question ON question_id=question.id 
 					JOIN user ON user.id=answer.user_id
 					WHERE question.id=:id";
@@ -58,7 +59,16 @@
 				//print_r($answers);	
 
 	
-				//print_r($nbAnswers);	
+	$sql = "SELECT comment FROM comment
+					JOIN question ON questionOrAnswer_id=question.id 
+					JOIN answer ON questionOrAnswer_id=answer.id 
+
+					WHERE question.id=:id AND questionOrAnswer=1 " ; 
+					
+				$stmt = $dbh->prepare($sql);
+				$stmt->bindValue(":id",$id);
+				$stmt->execute();
+				$commentsA = $stmt->fetchAll();			
 
 
 
@@ -97,9 +107,9 @@
 
 		<a href="comment.php?id=<?php echo $id; ?>">Commenter la question</a>
 		<p id="com">Commentaires de la question</p>
-		<?php foreach ($comments as $comment){ ?>
-		<p><?php echo $comment['comment'];?></p>
-		<?php } ?>
+			<?php foreach ($comments as $comment){ ?>
+			<p><?php echo $comment['comment'];?></p>
+			<?php } ?>
 
 		<p id="rep"><?php echo $nbAnswers;?> réponses</p>
 
@@ -121,8 +131,16 @@
 			<p><?php echo $answer['content'];?></p>
 			<p><?php echo $answer['pseudo'];?></p>
 			<p><?php echo $answer['dateCreated'];?></p>
+			<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (1); ?>">Commenter la réponse</a>
+<p>Commentaires de la réponse</p>	
+			<?php foreach ($commentsA as $commentA){ ?>
+			<p><?php echo $commentA['comment'];?></p>
+			<?php } ?>
+
 		</div>	
 			<?php } ?>
+
+
 		<div id="votreReponse">
 			<p>Votre réponse</p>
 			

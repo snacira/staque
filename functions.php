@@ -162,6 +162,8 @@ function addcomment(){
 		global $dbh;
 		global $errors;
 		$questionOrAnswer_id = $_GET['id'];
+		$qOrA=$_GET['q_a'];
+		//echo($qOrA);
 
 		if (!empty($_POST)){
 
@@ -173,11 +175,12 @@ function addcomment(){
 
 			if (empty($errors)){
 
-				$sql = "INSERT INTO comment(id, comment, questionOrAnswer_id, user_id)
-						VALUES ('',:comment, :questionOrAnswer_id, :user_id)";
+				$sql = "INSERT INTO comment(id, comment,questionOrAnswer, questionOrAnswer_id, user_id)
+						VALUES ('',:comment,:qOrA ,:questionOrAnswer_id, :user_id)";
 
 				$stmt = $dbh->prepare($sql);
 					$stmt->bindValue(":comment", $comment);
+					$stmt->bindValue(":qOrA", $qOrA);
 					$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
 					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
 					$stmt->execute();
