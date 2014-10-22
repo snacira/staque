@@ -120,6 +120,8 @@ if (!empty($_POST)){
 	$title = $_POST['title'];
 	$content = $_POST['content'];
 
+
+
 	if (empty($title)){
 		$errors[] = "Titre manquant !";
 	}
@@ -131,12 +133,12 @@ if (!empty($_POST)){
 	if (empty($errors)){
 
 	$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-				VALUES ('',:title, :content, 999, NOW(), NOW() )";
+				VALUES ('',:title, :content,999, NOW(), NOW() )";
 
 		$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":title", $title);
 			$stmt->bindValue(":content", $content);
-			$stmt->execute();
+			/xampp3$stmt->execute();
 
 		}
 	}
