@@ -90,21 +90,21 @@ include("inc/nav.php");
 				echo "<li><img src='img/perso" . $i . ".jpg' class='bxsliderAvatar' alt='avatar' width='90' height='90' ></li>";
 			} ?>
 		</ul>
-		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="">
+		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="<?php echo $mesInfosPerso["image"];?>">
 
 <!-- 
 		<label for="image"><input type="file" name="image" value="" class="file" placeholder=""></label> -->
 
 		<div class="field_container">
-		<?php if(empty($mesInfosPerso["image"])) { ?>
+<!-- 		<?php if(empty($mesInfosPerso["image"])) { ?>
 
 			<img src="img/<?php echo $avatarDefault; ?>" class="avatar" alt="avatar" width="90" height="90">
 
 		<?php } else { ?>
 
-			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="90" height="90">
+			<img src="<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="90" height="90">
 
-		<?php } ?>	
+		<?php } ?>	 -->
 
 
 		</div>

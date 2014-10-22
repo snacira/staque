@@ -19,7 +19,7 @@ $(".bxsliderAvatar").on("click", function(){
 
 	$('.bxslider li img').removeClass("selected");
     $(this).addClass("selected");
-
+    return true;
 	//console.log(src);
 });
 
