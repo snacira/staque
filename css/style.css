@@ -54,6 +54,7 @@ table {
 body{
 	font: 300 1.3rem/1.3rem Oswald;
 	color: #000;
+	background-color: #f3f2f2;
 }
 h1{
 	margin: 15px 0;
@@ -78,14 +79,12 @@ h3{
 .colLeft{
 	float: left;
 	width: 15%;
-	margin-bottom: 30px;
 }
 .colRight{
 	float: left;
-	width: 75%;	
+	width: 82%;	
 	border-left: 1px solid #ccc;
 	padding-left: 15px;
-	margin-bottom: 20px;
 }
 /************ HEADER  *******************/
 header{
@@ -172,7 +171,6 @@ nav .icon::before {
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
-	background-color: #f3f2f2;
 	padding: 20px;
 }
 
@@ -184,9 +182,15 @@ nav .icon::before {
 	padding-bottom: 10px;
 	margin: 20px 0;
 }
+
 .topQuestionWrap{
 	padding: 20px;
 	font-weight: 300;
+	margin: 30px 0;
+	background-color: #fff;
+}
+.topQuestionWrap .compteurs li{
+	margin: 15px 0;
 }
 .topQuestionWrap .question h3{
 	text-align: left;
@@ -199,11 +203,13 @@ nav .icon::before {
 	margin: 15px 0;
 }
 
+.topQuestionWrap .question .tags{ width: 70%; float: left;}
+.topQuestionWrap .question .user{ width: 30%; float: right;}
 
-#voteQ #plus{
+/*#voteQ #plus{
 	width:20px;
 	background-color: grey;
-}
+}*/
 
 
 
@@ -261,7 +267,8 @@ h2#reponse{
 }
 
 #tags{
-	margin-top: 10px
+	margin-top: 10px;
+	color: #ee9c5b;
 }
 
 .submit{

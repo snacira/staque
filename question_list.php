@@ -13,9 +13,8 @@
 <section class="container topQuestion">
 	<h2>Liste des Questions</h2>
 
-	<div class="topQuestionWrap">
-		<?php foreach ($questions as $question){ ?>
-			
+	<?php foreach ($questions as $question){ ?>
+	<div class="topQuestionWrap">		
 		<div class="clearboth colLeft">
 			<ul class="compteurs">
 				<li><strong>0</strong> votes</li>
@@ -36,16 +35,16 @@
 				</a>
 			</div> 
 
-			<div class="date_user">
+			<div class="user">
 				<ul>
 					<li class="score"><?= $question['score'];?></a></li>
 					<li><a href="detail_profil.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['name'];?></a></li>
 					<li><?= $question['dateCreated'];?></a></li>
 				</ul>
-			</div>
-			
+			</div>			
 		</div>
-		<?php } ?>
+		<div class="clearboth"></div>
 	</div>
+	<?php } ?>
 </section>
 
