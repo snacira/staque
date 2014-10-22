@@ -49,7 +49,7 @@
 <?php
 
 
-$sql = "SELECT * FROM question";
+$sql = "SELECT * FROM question ORDER BY dateCreated DESC";
 $sth = $dbh->prepare($sql);
 $sth->execute();
 
