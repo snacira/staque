@@ -17,7 +17,7 @@
 			else {
 			?>
 				<a href="login.php" title="Login" class="login"> Connexion </a>|
-				<a href="register.php" title="signUp" class="login"> Crée un compte </a>
+				<a href="register.php" title="signUp" class="login"> Créer un compte </a>
 			<?php } ?>
 		</div>
 	</div>

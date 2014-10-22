@@ -37,5 +37,5 @@
 			echo '</ul>';
 		}
 	?>
-	<input type="submit" value="J'Y VAIS !" />
+	<input type="submit" value="Valider" />
 </form>
