@@ -156,6 +156,20 @@ nav .icon::before {
 
 /************ BODY  *******************/
 
+/*présentation*/
+
+#presentation{
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	text-align: center;
+}
+
+#presentation p{
+	font-style: 
+}
+
+
 .container{
 	/*text-align: left;*/
 	width: 980px;
@@ -163,6 +177,7 @@ nav .icon::before {
 	margin: 0 auto;
 	background-color: #f3f2f2;
 	padding: 20px;
+	margin-top: 20px;
 }
 
 h1.title{
@@ -227,6 +242,12 @@ h2#reponse{
 label{
 	color: #f3ae73;
 }
+
+
+
+/*question page d'aceuil*/
+
+
 
 
 

@@ -1,5 +1,5 @@
 <?php
-
+	$title = "Staque | Mot de passe oublié";
 	session_start();
 
 	include("db.php");

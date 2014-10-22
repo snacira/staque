@@ -1,5 +1,5 @@
 <?php
-
+	$title = "Staque | Connexion ";
 	session_start();
 
 	include("db.php");

@@ -1,4 +1,5 @@
 <?php
+	$title = "Staque | Utilisateurs";
 	session_start();
 
 	include("db.php");

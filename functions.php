@@ -119,11 +119,12 @@
 			if (empty($errors)){
 
 				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-						VALUES ('',:title, :content, 999, NOW(), NOW() )";
+						VALUES ('',:title, :content, :user_id, NOW(), NOW() )";
 
 				$stmt = $dbh->prepare($sql);
 					$stmt->bindValue(":title", $title);
 					$stmt->bindValue(":content", $content);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
 					$stmt->execute();
 			}
 		}

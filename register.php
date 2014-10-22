@@ -1,5 +1,5 @@
 <?php
-
+	$title = "Staque | Inscription ";
 	session_start();
 
 	include("db.php");
