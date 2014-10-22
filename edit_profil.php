@@ -96,7 +96,7 @@ include("inc/nav.php");
 		<label for="image"><input type="file" name="image" value="" class="file" placeholder=""></label> -->
 
 		<div class="field_container">
-<!-- 		<?php if(empty($mesInfosPerso["image"])) { ?>
+<!-- 		<?php if(empty($mesInfosPerso["image"] == $i)) { ?>
 
 			<img src="img/<?php echo $avatarDefault; ?>" class="avatar" alt="avatar" width="90" height="90">
 

@@ -6,6 +6,10 @@
 	include("db.php");
 	include("functions.php");
 
+/*	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";*/
+	
 	//déclaration des variables du formulaire
 	$image 			= "";
 	$name 			= "";
@@ -19,7 +23,7 @@
 	//formulaire soumis ?
 	if (!empty($_POST)){
 
-		$image 			= $_POST['defaultAvatar1'];
+		$image 			= $_POST['defaultAvatar'];
 		$name 			= strip_tags($_POST['name']);
 		$pseudo			= strip_tags($_POST['pseudo']);
 		$mail 			= strip_tags($_POST['mail']);

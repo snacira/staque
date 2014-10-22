@@ -13,7 +13,6 @@ $(document).ready(function(){
  
 $(".bxsliderAvatar").on("click", function(){
 
-
 	var src= $(this).attr("src");
 	$("#defaultAvatar").val(src);
 

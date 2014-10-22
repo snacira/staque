@@ -11,7 +11,7 @@
 				echo "<li><img src='img/perso" . $i . ".jpg' class='bxsliderAvatar' alt='avatar' width='90' height='90' ></li>";
 			} ?>
 		</ul>
-		<input type="hidden" id="defaultAvatar1" name="defaultAvatar1" value="">
+		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="">
 	</div>
 
 	<div class="field_container">
