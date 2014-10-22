@@ -1,7 +1,7 @@
  <?php
 	
 	
-	$sql = "SELECT question.id,title,score,dateCreated,name,tags,		content,vues FROM question
+	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,		content,vues FROM question
 				JOIN user ON question.user_id=user.id 
 				ORDER BY question.id DESC";
 			$stmt = $dbh->prepare($sql);
@@ -38,7 +38,7 @@
 			<div class="user">
 				<ul>
 					<li class="score"><?= $question['score'];?></a></li>
-					<li><a href="detail_profil.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['name'];?></a></li>
+					<li><a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['pseudo'];?></a></li>
 					<li><?= $question['dateCreated'];?></a></li>
 				</ul>
 			</div>			

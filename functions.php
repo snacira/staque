@@ -112,11 +112,22 @@
 				$errors[] = "Titre manquant !";
 			}
 
-			if (empty($content)){
-				$errors[] = "Veuiller rediger une question !";
-			}
 
-			if (empty($errors)){
+
+
+		if (empty($title)){
+			$errors[] = "Titre manquant !";
+		}
+
+		if (empty($content)){
+				$errors[] = "Veuiller rediger une question !";
+		}
+
+
+		
+
+
+	if (empty($errors)){
 
 				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
 						VALUES ('',:title, :content, :user_id, NOW(), NOW() )";

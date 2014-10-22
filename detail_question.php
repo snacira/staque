@@ -8,7 +8,7 @@
 	
 
 	$id=$_GET['id'];
-	$sql = "SELECT question.id,title,score,dateCreated,name,tags,content,vues,points FROM question
+	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,points FROM question
 					JOIN user ON question.user_id=user.id 
 					WHERE question.id=:id";
 					
@@ -38,7 +38,7 @@
 				$stmt->execute();
 				$comments = $stmt->fetchAll();
 
-	$sql = "SELECT answer.content, answer.user_id,name, answer.dateCreated FROM answer
+	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated FROM answer
 					JOIN question ON question_id=question.id 
 					JOIN user ON user.id=answer.user_id
 					WHERE question.id=:id";
@@ -77,9 +77,7 @@
 		<div id="moins">
 		 	<span>-</span>
 		</div>
-		<div id="etoile">
-			<img src="img/etoile.png" width=20px />
-		</div>
+		
 	</div>
 	<div id="statsQ">
 		<p>Posée le : <?= $question['dateCreated'];?></p>
@@ -89,6 +87,11 @@
 		<h3><?php echo $question['title'];?></h3>
 
 		<p><?php echo $question['content'];?></p>
+		<p><?php echo $question['tags'];?></p>
+
+		<p> Auteur : <a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['pseudo'];?></a></p>
+		<p><?php echo $question['score'];?></p>
+		<p> Le <?php echo $question['dateCreated'];?></p>
 
 		<a href="comment.php?id=<?php echo $id; ?>">Commenter la question</a>
 		<p id="com">Commentaires de la question</p>
@@ -114,10 +117,34 @@
 		
 		<div class="contenuRep">
 			<p><?php echo $answer['content'];?></p>
-			<p><?php echo $answer['name'];?></p>
+			<p><?php echo $answer['pseudo'];?></p>
 			<p><?php echo $answer['dateCreated'];?></p>
 		</div>	
 			<?php } ?>
+		<div id="votreReponse">
+			<p>Votre réponse</p>
+			<form id="formulairederuestion" method="POST">
+			
+			
+			<label class="questionarea">
+				<textarea name="content" placeholder="Poser votre question"><?php if (!empty($_POST['content'])){ echo $_POST['content'] ;}?></textarea>
+			</label>
+			
+			
+
+			<?php 
+		if (!empty($errors)){
+			echo '<ul class="errors">';
+			foreach($errors as $error){
+				echo '<li>'.$error.'</li>';
+			}
+			echo '</ul>';
+		}
+	?>
+			
+			<label class="submit"><input type="submit" value="Envoyer votre réponse"></label>
+	</form>
+		</div>
 
 	</div>
 	
