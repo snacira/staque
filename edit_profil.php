@@ -17,7 +17,7 @@
 	$websites 	= "";
 
 	$mesInfosPerso = infosPerso($_SESSION["user"]['id']);
-
+	$avatarDefault = "perso10.jpg";
 
 	//à afficher qu'à la validation du form
 	if(!empty($_POST)){
@@ -84,10 +84,18 @@ include("inc/nav.php");
 
 		<h3>Modifier votre profil</h3>
 		<div class="field_container">
-		
+		<?php if(empty($mesInfosPerso["image"])) { ?>
+
+			<img src="img/<?php echo $avatarDefault; ?>" alt="avatar" width="90" height="90">
+
+		<?php } else { ?>
+
 			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+
+		<?php } ?>	
+
 			<br>
-			<input type="file" name="image" value="" placeholder="">
+			<label for="image"><span>Changer l'image</span><input type="file" name="image" value="" placeholder=""></label>
 		</div>
 		<div id="infos">
 			<div class="field_container">
