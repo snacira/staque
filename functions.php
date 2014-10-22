@@ -113,32 +113,30 @@
 				$errors[] = "Titre manquant !";
 			}
 
+			if (empty($title)){
+				$errors[] = "Titre manquant !";
+			}
+
+			if (empty($content)){
+					$errors[] = "Veuiller rediger une question !";
+			}
 
 
-
-		if (empty($title)){
-			$errors[] = "Titre manquant !";
-		}
-
-		if (empty($content)){
-				$errors[] = "Veuiller rediger une question !";
-		}
-
-
-		
-
-
-	if (empty($errors)){
+			if (empty($errors)){
 
 				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified,tags)
 						VALUES ('',:title, :content, :user_id, NOW(), NOW(),:tags )";
 
 				$stmt = $dbh->prepare($sql);
-					$stmt->bindValue(":title", $title);
-					$stmt->bindValue(":content", $content);
-					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
-					$stmt->bindValue(":tags", $tags);
-					$stmt->execute();
+				$stmt->bindValue(":title", $title);
+				$stmt->bindValue(":content", $content);
+				$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+				$stmt->bindValue(":tags", $tags);
+				$stmt->execute();
+			
+			$lastId = $dbh->lastInsertId();
+			header("Location:detail_question.php?id=".$lastId);
+			die();
 			}
 		}
 	}

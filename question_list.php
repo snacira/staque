@@ -3,7 +3,7 @@
 	
 	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,		content,vues FROM question
 				JOIN user ON question.user_id=user.id 
-				ORDER BY question.id DESC";
+				ORDER BY question.id DESC LIMIT 2";
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute();
 			$questions = $stmt->fetchAll();
@@ -46,5 +46,14 @@
 		<div class="clearboth"></div>
 	</div>
 	<?php } ?>
+
+	<?php if ($page > 1){ ?>
+	<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1; ?>">Page précédente</a>
+	<?php } ?>
+
+	<?php if ($page < $totalPages){ ?>
+	<a href="index.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1; ?>">Page suivante</a>
+	<?php } ?>
+
 </section>
 
