@@ -90,7 +90,7 @@
 
 		<p><?php echo $question['content'];?></p>
 
-		<a href="comment.php">Commenter la question</a>
+		<a href="comment.php?id=<?php echo $id; ?>">Commenter la question</a>
 		<p id="com">Commentaires de la question</p>
 		<?php foreach ($comments as $comment){ ?>
 		<p><?php echo $comment['comment'];?></p>
