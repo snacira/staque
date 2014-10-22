@@ -1,5 +1,5 @@
 <?php 
-	
+	$title = "Staque | Poser une question ";
 	session_start();
 
 	include("db.php");
@@ -20,15 +20,15 @@
 	
 	<form id="formulairedequestion" method="POST">
 			<label>Titre
-				<input class="intext" type="text" name="title" placeholder="Entré votre titre" value="<?php if (!empty($_POST['title'])){ echo $_POST['title'] ;}?>">
+				<input class="intext" type="text" name="title" placeholder="Entrez votre titre" value="<?php if (!empty($_POST['title'])){ echo $_POST['title'] ;}?>">
 			</label>
 			
 			<label class="questionarea">
 				<textarea name="content" placeholder="Poser votre question"><?php if (!empty($_POST['content'])){ echo $_POST['content'] ;}?></textarea>
 			</label>
 			
-			<label id="tags">Mots-clé
-				<input class="intext" type="text"placeholder="Choisiez vos mots clé">
+			<label id="tags">Mots-clés
+				<input class="intext" type="text"placeholder="Choisissez vos mots-clés" name="tags">
 			</label>
 
 			<?php 
@@ -41,7 +41,7 @@
 		}
 	?>
 			
-			<label class="submit"><input type="submit" value="Posser la question"></label>
+			<label class="submit"><input type="submit" value="Poser la question"></label>
 	</form>
 
 </section>
@@ -49,7 +49,7 @@
 <?php
 
 
-$sql = "SELECT * FROM question ORDER BY dateCreated DESC";
+$sql = "SELECT * FROM question ORDER BY dateCreated DESC LIMIT 1";
 $sth = $dbh->prepare($sql);
 $sth->execute();
 

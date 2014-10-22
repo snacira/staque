@@ -166,12 +166,27 @@ nav .icon::before {
 
 /************ BODY  *******************/
 
+/*présentation*/
+
+#presentation{
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	text-align: center;
+}
+
+#presentation p{
+	font-style: 
+}
+
+
 .container{
 	/*text-align: left;*/
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
 	padding: 20px;
+	margin-top: 20px;
 }
 
 /*** home ***/
@@ -279,6 +294,12 @@ h2#reponse{
 label{
 	color: #f3ae73;
 }
+
+
+
+/*question page d'aceuil*/
+
+
 
 
 

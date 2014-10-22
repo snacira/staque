@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 21 Octobre 2014 à 16:44
+-- Généré le :  Mer 22 Octobre 2014 à 10:24
 -- Version du serveur :  5.6.16
 -- Version de PHP :  5.5.11
 
@@ -171,19 +171,19 @@ INSERT INTO `tag_question` (`tag_id`, `question_id`) VALUES
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `image` varchar(150) NOT NULL,
+  `image` varchar(150) DEFAULT NULL,
   `pseudo` varchar(100) NOT NULL,
   `mail` varchar(150) NOT NULL,
   `password` varchar(255) NOT NULL,
   `salt` varbinary(256) NOT NULL,
   `token` varchar(50) NOT NULL,
-  `birthday` date NOT NULL,
-  `job` varchar(150) NOT NULL,
-  `location` varchar(100) NOT NULL,
-  `lang` varchar(100) NOT NULL,
+  `birthday` date DEFAULT NULL,
+  `job` varchar(150) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
+  `lang` varchar(100) DEFAULT NULL,
   `score` int(10) NOT NULL,
   `vote` int(10) NOT NULL,
-  `websites` varchar(150) NOT NULL,
+  `websites` varchar(150) DEFAULT NULL,
   `dateRegistred` date NOT NULL,
   `dateModified` date NOT NULL,
   `dateConnected` datetime NOT NULL,

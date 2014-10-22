@@ -1,4 +1,5 @@
 <?php
+	$title = "Staque | Profil ";
 	session_start();
 
 	include("db.php");

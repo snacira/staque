@@ -1,5 +1,5 @@
 <?php
-
+	$title = "Staque | Inscription ";
 	session_start();
 
 	include("db.php");
@@ -83,8 +83,8 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO user (name, pseudo, mail, password, salt, token, dateRegistred, dateModified) 
-				VALUES (:name, :pseudo, :mail, :password, :salt, :token, NOW(), NOW())";
+			$sql = "INSERT INTO user (name, pseudo, mail, password, salt, token, dateRegistred, dateModified,score) 
+				VALUES (:name, :pseudo, :mail, :password, :salt, :token, NOW(), NOW(),5)";
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":mail", $mail);

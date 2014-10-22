@@ -107,24 +107,109 @@
 
 			$title = $_POST['title'];
 			$content = $_POST['content'];
+			$tags = $_POST['tags'];
 
 			if (empty($title)){
 				$errors[] = "Titre manquant !";
 			}
 
-			if (empty($content)){
+
+
+
+		if (empty($title)){
+			$errors[] = "Titre manquant !";
+		}
+
+		if (empty($content)){
 				$errors[] = "Veuiller rediger une question !";
-			}
+		}
 
-			if (empty($errors)){
 
-				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-						VALUES ('',:title, :content, 999, NOW(), NOW() )";
+		
+
+
+	if (empty($errors)){
+
+				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified,tags)
+						VALUES ('',:title, :content, :user_id, NOW(), NOW(),:tags )";
 
 				$stmt = $dbh->prepare($sql);
 					$stmt->bindValue(":title", $title);
 					$stmt->bindValue(":content", $content);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->bindValue(":tags", $tags);
 					$stmt->execute();
 			}
 		}
+	}
+
+
+	function nbRep($id){
+	global $dbh; 	
+	$sql = "SELECT COUNT(*) FROM answer
+					JOIN question ON question_id=question.id 
+					WHERE question.id=:id";
+					
+				$stmt = $dbh->prepare($sql);
+				$stmt->bindValue(":id",$id);
+				$stmt->execute();
+				$nbAnswers = $stmt->fetchColumn();
+				return $nbAnswers;
+	}
+
+function addcomment(){
+
+		global $dbh;
+		global $errors;
+		$questionOrAnswer_id = $_GET['id'];
+
+		if (!empty($_POST)){
+
+			$comment = $_POST['comment'];
+
+			if (empty($comment)){
+				$errors[] = "Ecriver un commentaire !";
+			}
+
+			if (empty($errors)){
+
+				$sql = "INSERT INTO comment(id, comment, questionOrAnswer_id, user_id)
+						VALUES ('',:comment, :questionOrAnswer_id, :user_id)";
+
+				$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":comment", $comment);
+					$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->execute();
+			}
+		}
+	}
+
+function addanswer(){
+
+		global $dbh;
+		global $errors;
+		$question_id = $_GET['id'];
+
+		if (!empty($_POST)){
+
+			$answer = $_POST['content'];
+
+			if (empty($answer)){
+				$errors[] = "Ecriver une reponse !";
+			}
+
+			if (empty($errors)){
+
+				$sql = "INSERT INTO answer(id, content, user_id, question_id, dateCreated, dateModified)
+						VALUES ('',:content, :user_id, :question_id, NOW(), NOW())";
+
+				$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":content", $answer);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->bindValue(":question_id", $question_id);
+					$stmt->execute();
+			}
+		}
+
 	}
