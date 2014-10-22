@@ -1,5 +1,5 @@
 <?php 
-	
+	$title = "Staque | Poser une question ";
 	session_start();
 
 	include("db.php");
@@ -49,7 +49,7 @@
 <?php
 
 
-$sql = "SELECT * FROM question";
+$sql = "SELECT * FROM question ORDER BY dateCreated DESC LIMIT 1";
 $sth = $dbh->prepare($sql);
 $sth->execute();
 

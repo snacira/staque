@@ -22,7 +22,7 @@
 				echo '</ul>';
 			}
 		?>
-		<input type="submit" value="SIGN IN !" />
+		<input type="submit" value="Valider" />
 		<div class="field_container">
 			<a href="password_reset_1.php" title="Mot de passe oublié ?" class="forgotPswd">Mot de passe oublié ?</a>	
 		</div>

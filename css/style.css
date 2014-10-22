@@ -54,6 +54,7 @@ table {
 body{
 	font: 300 1.3rem/1.3rem Oswald;
 	color: #000;
+	background-color: #f3f2f2;
 }
 h1{
 	margin: 15px 0;
@@ -75,7 +76,16 @@ h3{
 .clearboth{
 	clear: both;
 }
-
+.colLeft{
+	float: left;
+	width: 15%;
+}
+.colRight{
+	float: left;
+	width: 82%;	
+	border-left: 1px solid #ccc;
+	padding-left: 15px;
+}
 /************ HEADER  *******************/
 header{
 	background-color: #414a51;
@@ -156,14 +166,70 @@ nav .icon::before {
 
 /************ BODY  *******************/
 
+/*présentation*/
+
+#presentation{
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	text-align: center;
+}
+
+#presentation p{
+	font-style: 
+}
+
+
 .container{
 	/*text-align: left;*/
 	width: 980px;
 	zoom: 1;
 	margin: 0 auto;
-	background-color: #f3f2f2;
 	padding: 20px;
+	margin-top: 20px;
 }
+
+/*** home ***/
+.topQuestion h2{
+	font: 500 1.2em/1.2em Oswald;
+	text-align: left;
+	border-bottom: 1px solid #414a51;
+	padding-bottom: 10px;
+	margin: 20px 0;
+}
+
+.topQuestionWrap{
+	padding: 20px;
+	font-weight: 300;
+	margin: 30px 0;
+	background-color: #fff;
+}
+.topQuestionWrap .compteurs li{
+	margin: 15px 0;
+}
+.topQuestionWrap .question h3{
+	text-align: left;
+	font: 500 1em/1em PT Sans Narrow;
+	margin-bottom: 15px;
+}
+.topQuestionWrap .question p{
+	text-align: left;
+	font: 300 0.8em/0.8em Lato;
+	margin: 15px 0;
+}
+
+.topQuestionWrap .question .tags{ width: 70%; float: left;}
+.topQuestionWrap .question .user{ width: 30%; float: right;}
+
+/*#voteQ #plus{
+	width:20px;
+	background-color: grey;
+}*/
+
+
+
+
+
 
 h1.title{
 	margin-left: 35px;
@@ -216,7 +282,8 @@ h2#reponse{
 }
 
 #tags{
-	margin-top: 10px
+	margin-top: 10px;
+	color: #ee9c5b;
 }
 
 .submit{
@@ -227,6 +294,12 @@ h2#reponse{
 label{
 	color: #f3ae73;
 }
+
+
+
+/*question page d'aceuil*/
+
+
 
 
 
@@ -320,7 +393,3 @@ footer{
 	color: #fff;
 }
 /***********************************/
-#voteQ #plus{
-	width:20px;
-	background-color: grey;
-}

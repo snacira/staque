@@ -1,38 +1,44 @@
 <?php
+	$title = "Staque | Editer profil ";
 	session_start();
 
 	include("db.php");
 	include("functions.php");
 
 	//récupère nos données depuis la bdd
-	$image = "";
-	$name = "";
-	$pseudo = "";
-	$mail = "";
-	$birthday = "";
-	$job = "";
-	$location = "";
-	$lang = "";
-	$websites = "";
+	$id 		= "";
+	$image 		= "";
+	$name 		= "";
+	$pseudo 	= "";
+	$mail 		= "";
+	$birthday 	= "";
+	$job 		= "";
+	$location 	= "";
+	$lang 		= "";
+	$websites 	= "";
 
-	$mesInfosPerso = infosPerso($_SESSION['user']['id']);
+	$mesInfosPerso = infosPerso($_SESSION["user"]['id']);
+	$avatarDefault = "perso10.jpg";
 
 	//à afficher qu'à la validation du form
 	if(!empty($_POST)){
+
 		echo "<pre>";
 		print_r($_POST);
+
 		global $dbh;
 
-		$image = $_POST['image'];
-		$pseudo = $_POST['pseudo'];
-		$name = $_POST['name'];
-		$mail = $_POST['mail'];
-		$birthday = $_POST['birthday'];
-		$job = $_POST['job'];
-		$location = $_POST['location'];
-		$lang = $_POST['lang'];
-		$websites = $_POST['websites'];
-		$id = $_SESSION['user']['id'];
+		$image 		= $_POST['image'];
+		$pseudo 	= $_POST['pseudo'];
+		$name 		= $_POST['name'];
+		$mail 		= $_POST['mail'];
+		$birthday 	= $_POST['birthday'];
+		$job 		= $_POST['job'];
+		$Location 	= $_POST['location'];
+		$lang 		= $_POST['lang'];
+		$websites 	= $_POST['websites'];
+		$id 		= $_SESSION["user"]['id'];
+
 
 		$sql = "UPDATE user
 				SET image = :image,
@@ -60,13 +66,11 @@
 		$stmt->bindValue(":websites", $websites);
 
 		if($stmt->execute()){
-			header("Location: account.php");
+			header("Location:account.php?id=" . $_SESSION['user']["id"]);
 			die();
 		}
 
 	}
-
-
 
 include("inc/header.php");
 include("inc/nav.php");
@@ -81,10 +85,18 @@ include("inc/nav.php");
 
 		<h3>Modifier votre profil</h3>
 		<div class="field_container">
-		
+		<?php if(empty($mesInfosPerso["image"])) { ?>
+
+			<img src="img/<?php echo $avatarDefault; ?>" alt="avatar" width="90" height="90">
+
+		<?php } else { ?>
+
 			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+
+		<?php } ?>	
+
 			<br>
-			<input type="file" name="image" value="" placeholder="">
+			<label for="image"><span>Changer l'image</span><input type="file" name="image" value="" placeholder=""></label>
 		</div>
 		<div id="infos">
 			<div class="field_container">

@@ -75,8 +75,8 @@
 	}
 			
 
-	function getProfilList($id){
-		
+	function getProfilList(){
+
 		$id = "";
 		$image = "";
 		$pseudo = "";
@@ -88,11 +88,6 @@
 
 		$stmt = $dbh->prepare($sql);
 
-		$stmt->bindValue(":id", $id);
-		$stmt->bindValue(":image", $image);
-		$stmt->bindValue(":pseudo", $pseudo);
-		$stmt->bindValue(":location", $location);
-
 		$stmt->execute();
 		$profilsList = $stmt->fetchAll();
 		
@@ -102,44 +97,46 @@
 		return $profilsList;
 	}
 
+	//Ajouter une question
+	function addquestion(){
+
+		global $dbh;
+		global $errors;
+
+		if (!empty($_POST)){
+
+			$title = $_POST['title'];
+			$content = $_POST['content'];
+
+			if (empty($title)){
+				$errors[] = "Titre manquant !";
+			}
 
 
 
 
-//add question
+		if (empty($title)){
+			$errors[] = "Titre manquant !";
+		}
+
+		if (empty($content)){
+				$errors[] = "Veuiller rediger une question !";
+		}
 
 
-function addquestion(){
+		
 
-global $dbh;
-
-global $errors;
-
-if (!empty($_POST)){
-
-	$title = $_POST['title'];
-	$content = $_POST['content'];
-
-
-
-	if (empty($title)){
-		$errors[] = "Titre manquant !";
-	}
-
-	if (empty($content)){
-		$errors[] = "Veuiller rediger une question !";
-	}
 
 	if (empty($errors)){
 
-	$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-				VALUES ('',:title, :content,999, NOW(), NOW() )";
+				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
+						VALUES ('',:title, :content, :user_id, NOW(), NOW() )";
 
-		$stmt = $dbh->prepare($sql);
-			$stmt->bindValue(":title", $title);
-			$stmt->bindValue(":content", $content);
-			/xampp3$stmt->execute();
-
+				$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":title", $title);
+					$stmt->bindValue(":content", $content);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->execute();
+			}
 		}
 	}
-}
