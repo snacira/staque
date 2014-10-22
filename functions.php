@@ -107,6 +107,7 @@
 
 			$title = $_POST['title'];
 			$content = $_POST['content'];
+			$tags = $_POST['tags'];
 
 			if (empty($title)){
 				$errors[] = "Titre manquant !";
@@ -129,14 +130,28 @@
 
 	if (empty($errors)){
 
-				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified)
-						VALUES ('',:title, :content, :user_id, NOW(), NOW() )";
+				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified,tags)
+						VALUES ('',:title, :content, :user_id, NOW(), NOW(),:tags )";
 
 				$stmt = $dbh->prepare($sql);
 					$stmt->bindValue(":title", $title);
 					$stmt->bindValue(":content", $content);
 					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->bindValue(":tags", $tags);
 					$stmt->execute();
 			}
 		}
+	}
+
+	function nbRep($id){
+	global $dbh; 	
+	$sql = "SELECT COUNT(*) FROM answer
+					JOIN question ON question_id=question.id 
+					WHERE question.id=:id";
+					
+				$stmt = $dbh->prepare($sql);
+				$stmt->bindValue(":id",$id);
+				$stmt->execute();
+				$nbAnswers = $stmt->fetchColumn();
+				return $nbAnswers;
 	}

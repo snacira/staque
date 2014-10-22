@@ -7,18 +7,18 @@
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute();
 			$questions = $stmt->fetchAll();
-	
+
 ?>
 
 <section class="container topQuestion">
 	<h2>Liste des Questions</h2>
 
-	<?php foreach ($questions as $question){ ?>
+	<?php foreach ($questions as $question){ $nbAnswers=nbRep($question['id']);?>
 	<div class="topQuestionWrap">		
 		<div class="clearboth colLeft">
 			<ul class="compteurs">
 				<li><strong>0</strong> votes</li>
-				<li><strong>0</strong> réponses</li>
+				<li><strong><?php echo $nbAnswers;?></strong> réponses</li>
 				<li><strong><?= $question['vues'];?></strong> vues</li>
 			</ul>
 		</div>
