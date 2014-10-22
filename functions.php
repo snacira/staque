@@ -168,3 +168,31 @@ function addcomment(){
 			}
 		}
 	}
+
+function addanswer(){
+
+		global $dbh;
+		global $errors;
+		$question_id = $_GET['id'];
+
+		if (!empty($_POST)){
+
+			$answer = $_POST['content'];
+
+			if (empty($answer)){
+				$errors[] = "Ecriver une reponse !";
+			}
+
+			if (empty($errors)){
+
+				$sql = "INSERT INTO answer(id, content, user_id, question_id, dateCreated, dateModified)
+						VALUES ('',:content, :user_id, :question_id, NOW(), NOW())";
+
+				$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":content", $answer);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->bindValue(":question_id", $question_id);
+					$stmt->execute();
+			}
+		}
+	}

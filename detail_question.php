@@ -5,6 +5,11 @@
 	include("functions.php");
 	include("inc/header.php");
 	include("inc/nav.php");
+
+	$errors = array();
+	if (!empty($_POST)){
+		$mareponse = addanswer();
+	}
 	
 
 	$id=$_GET['id'];
@@ -123,27 +128,29 @@
 			<?php } ?>
 		<div id="votreReponse">
 			<p>Votre réponse</p>
-			<form id="formulairederuestion" method="POST">
-			
-			
-			<label class="questionarea">
-				<textarea name="content" placeholder="Poser votre question"><?php if (!empty($_POST['content'])){ echo $_POST['content'] ;}?></textarea>
-			</label>
-			
 			
 
-			<?php 
-		if (!empty($errors)){
-			echo '<ul class="errors">';
-			foreach($errors as $error){
-				echo '<li>'.$error.'</li>';
-			}
-			echo '</ul>';
-		}
-	?>
+
+		<form method="POST">
+				
+						
+			<label class="questionarea">
+				<textarea name="content" placeholder="Répondre a la question"></textarea>
+			</label>
 			
 			<label class="submit"><input type="submit" value="Envoyer votre réponse"></label>
-	</form>
+			
+				<?php 
+					if (!empty($errors)){
+							echo '<ul class="errors">';
+								foreach($errors as $error){
+							echo '<li>'.$error.'</li>';
+						}
+						echo '</ul>';
+					}
+				?>
+		</form>
+		
 		</div>
 
 	</div>
