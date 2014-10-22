@@ -379,11 +379,15 @@ h3.titreQuestion{
 }
 
 /** modifier profil **/
-img.avatar{
+img.bxsliderAvatar{
 	border: 5px solid #fff;
 	border-radius: 50%;
 	padding: 7px;
 }
+.selected{
+	border: 5px solid #f3ae73 !important;
+}
+
 	/* custom input file*/
 input[type="file"]{
 	height: 30px;

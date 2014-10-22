@@ -8,5 +8,20 @@ $(document).ready(function(){
   });
 });
 
+//récupérer le click de l'avatar
+
+ 
+$(".bxsliderAvatar").on("click", function(){
+
+
+	var src= $(this).attr("src");
+	$("#defaultAvatar").val(src);
+
+	$('.bxslider li img').removeClass("selected");
+    $(this).addClass("selected");
+
+	//console.log(src);
+});
+
 
 

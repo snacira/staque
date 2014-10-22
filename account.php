@@ -19,16 +19,10 @@ include("inc/nav.php");
 <section class="container">
 
 	<div id="account">
-	
-		<?php if(empty($mesInfosPerso["image"])) { ?>
 
-			<img src="img/<?php echo $avatarDefault; ?>" class="avatar" alt="avatar" width="90" height="90">
 
-		<?php } else { ?>
+			<img src="<?php echo $mesInfosPerso["image"]; ?>" class="bxsliderAvatar" alt="avatar" width="90" height="90">
 
-			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="90" height="90">
-
-		<?php } ?>
 		<br>
 		<div id="infos">
 			<p class="login"><span>Pseudo : </span><span><?php echo $mesInfosPerso["pseudo"]; ?></span></p>

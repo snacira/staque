@@ -1,5 +1,4 @@
 <?php
-	$title = "Staque | Editer profil ";
 	session_start();
 
 	include("db.php");
@@ -28,13 +27,13 @@
 
 		global $dbh;
 
-		$image 		= $_POST['image'];
+		$image 		= $_POST['defaultAvatar'];
 		$pseudo 	= $_POST['pseudo'];
 		$name 		= $_POST['name'];
 		$mail 		= $_POST['mail'];
 		$birthday 	= $_POST['birthday'];
 		$job 		= $_POST['job'];
-		$Location 	= $_POST['location'];
+		$location 	= $_POST['location'];
 		$lang 		= $_POST['lang'];
 		$websites 	= $_POST['websites'];
 		$id 		= $_SESSION["user"]['id'];
@@ -88,13 +87,13 @@ include("inc/nav.php");
 		<ul class="bxslider">	
 							
 			<?php for($i = 1; $i < 13; $i++){
-				echo "<li><a href=''><img src='img/perso" . $i . ".jpg' class='avatar' alt='avatar' width='90' height='90' ></a></li>";
+				echo "<li><img src='img/perso" . $i . ".jpg' class='bxsliderAvatar' alt='avatar' width='90' height='90' ></li>";
 			} ?>
 		</ul>
+		<input type="hidden" id="defaultAvatar" name="defaultAvatar" value="">
 
-		<div class="clearboth"></div>
-			<br>
-			<label for="image"><input type="file" name="image" value="browse" class="file" placeholder=""></label>
+<!-- 
+		<label for="image"><input type="file" name="image" value="" class="file" placeholder=""></label> -->
 
 		<div class="field_container">
 		<?php if(empty($mesInfosPerso["image"])) { ?>
