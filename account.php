@@ -18,13 +18,14 @@ include("inc/nav.php");
 <section class="container">
 
 	<div id="account">
+	
 		<?php if(empty($mesInfosPerso["image"])) { ?>
 
-			<img src="img/<?php echo $avatarDefault; ?>" alt="avatar" width="90" height="90">
+			<img src="img/<?php echo $avatarDefault; ?>" class="avatar" alt="avatar" width="90" height="90">
 
 		<?php } else { ?>
 
-			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" alt="avatar" width="90" height="90">
+			<img src="img/<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="90" height="90">
 
 		<?php } ?>
 		<br>

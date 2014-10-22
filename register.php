@@ -96,8 +96,26 @@
 
 			$stmt->execute();
 
-		 	header("Location: login.php");
-		 	die();
+
+			// loguer la personne après l'inscription
+			$sql = "SELECT * FROM user
+					WHERE pseudo = :login OR mail = :login
+					LIMIT 1";
+
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":login", $pseudo);
+			$stmt->execute();
+
+			$user = $stmt->fetch();
+
+			$hashedPassword = hashPassword($password, $user['salt']);
+			if ($hashedPassword === $user['password']){
+				$_SESSION['user'] = $user;
+				header("Location: index.php");
+				die();
+			}
+		 	//header("Location: login.php");
+		 	//die();
 		}
 	}
 include("inc/header.php");
