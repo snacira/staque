@@ -75,7 +75,18 @@ h3{
 .clearboth{
 	clear: both;
 }
-
+.colLeft{
+	float: left;
+	width: 15%;
+	margin-bottom: 30px;
+}
+.colRight{
+	float: left;
+	width: 75%;	
+	border-left: 1px solid #ccc;
+	padding-left: 15px;
+	margin-bottom: 20px;
+}
 /************ HEADER  *******************/
 header{
 	background-color: #414a51;
@@ -164,6 +175,40 @@ nav .icon::before {
 	background-color: #f3f2f2;
 	padding: 20px;
 }
+
+/*** home ***/
+.topQuestion h2{
+	font: 500 1.2em/1.2em Oswald;
+	text-align: left;
+	border-bottom: 1px solid #414a51;
+	padding-bottom: 10px;
+	margin: 20px 0;
+}
+.topQuestionWrap{
+	padding: 20px;
+	font-weight: 300;
+}
+.topQuestionWrap .question h3{
+	text-align: left;
+	font: 500 1em/1em PT Sans Narrow;
+	margin-bottom: 15px;
+}
+.topQuestionWrap .question p{
+	text-align: left;
+	font: 300 0.8em/0.8em Lato;
+	margin: 15px 0;
+}
+
+
+#voteQ #plus{
+	width:20px;
+	background-color: grey;
+}
+
+
+
+
+
 
 h1.title{
 	margin-left: 35px;
@@ -320,7 +365,3 @@ footer{
 	color: #fff;
 }
 /***********************************/
-#voteQ #plus{
-	width:20px;
-	background-color: grey;
-}

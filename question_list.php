@@ -10,44 +10,25 @@
 	
 ?>
 
-<section class="container">
+<section class="container topQuestion">
+	<h2>Liste des Questions</h2>
 
-	<div class="qWrap">
-		<h3 id="listeQ">Liste des Questions</h3>
-
-		<?php
-			foreach ($questions as $question){ ?>
+	<div class="topQuestionWrap">
+		<?php foreach ($questions as $question){ ?>
 			
-		<div class="gauche">
-
-			<div class="votes">	
-				<div class="compteur_votes">
-					<span>0</span>
-				</div>
-				<p>votes</p>
-			</div>
-
-			<div class="reponses">
-				<div class="compteur_reponses">
-					<span>0</span>
-				</div>
-				<p>réponses</p>
-			</div>
-			<div class="vues">
-				<div  class="compteur_vues">
-					<span><?= $question['vues'];?></span>
-				</div>
-				<p>vues</p>
-			</div>
-
+		<div class="clearboth colLeft">
+			<ul class="compteurs">
+				<li><strong>0</strong> votes</li>
+				<li><strong>0</strong> réponses</li>
+				<li><strong><?= $question['vues'];?></strong> vues</li>
+			</ul>
 		</div>
-		<div class="question">
-		
+		<div class="colRight question">
 			<h3>
 				<a href="detail_question.php?id=<?= $question['id'];?>"  class="lien_question" id="<?= $question['id'];?>" title=""><?php echo $question['title']; ?></a>
 			</h3>
 
-			<?php echo substr($question['content'],0,300)."..."; ?>
+			<p><?php echo substr($question['content'],0,300)."..."; ?></p>
 
 			<div class="tags">
 				<a href="" id="tags" title="">   
