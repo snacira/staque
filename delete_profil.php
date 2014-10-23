@@ -1,10 +1,11 @@
 <?php 
-
-	$id = $_GET['user'];
+	
+	session_start();
+	$id = $_SESSION['user']['id'];
 
 	include("db.php");
 
-	$sql ="DELETE from user WHERE id = :id";
+	$sql ="DELETE from user WHERE id =$id";
 
 	$stmt = $dbh->prepare($sql);
 
@@ -12,5 +13,5 @@
 
 	$stmt->execute();
 
-	header("location: index.php")
+	header("location: logout.php")
 	?>
