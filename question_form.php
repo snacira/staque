@@ -32,7 +32,7 @@
 				</label>
 				
 				<label id="tags">Mots-clés
-					<input class="intext" type="text"placeholder="Choisissez vos mots-clés" name="tags">
+					<input id="autocompletion" class="intext" type="text"placeholder="Choisissez vos mots-clés" name="tags">
 				</label>
 
 				<?php 
