@@ -14,6 +14,32 @@
 	print_r ($myAnswersQuestions);
 	echo "</pre>";*/
 
+	/*Ajout de points*/
+
+/*	$voter = $_POST["voter"];
+
+	echo "<pre>";
+	print_r ($_POST);
+	echo "</pre>";
+
+	//je recup l'id du user
+	$user = $_GET['id'];
+
+	$sql = "SELECT score FROM user
+			WHERE id = $user";
+
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+	$score = $stmt->fetchColumn();
+
+	$addpoint = $score +20;
+
+	$sql = "UPDATE user SET score = $addpoint";	
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindValue(":voter", $voter);
+	$stmt->execute();*/
+
+
 	$avatarDefault = "perso10.jpg";
 
 include("inc/header.php");
@@ -76,12 +102,18 @@ include("inc/nav.php");
 					<?php 
 					//appel de la fonction 
 					$myAnswersQuestions = addAnswerOfQuestionHistory($myQuestion["id"]);
-					foreach ($myAnswersQuestions as $myAnswersQuestion) { ?>
-						<label for="voter">
-							<input type="radio" name="voter" value="voter">
-							<span><?php echo $myAnswersQuestion['content']; ?></span>
-						</label>
-					<?php } ?>
+
+					?>
+						<form method="POST">
+							<?php foreach ($myAnswersQuestions as $myAnswersQuestion) { ?>
+							<label for="voter">
+								<input type="radio" name="voter" value="<?php echo $myAnswersQuestion['id'];  ?>">
+								<span><?php echo $myAnswersQuestion['content']; ?></span>
+							</label>
+							<?php } ?>
+							<input type="submit" name="" value="Valider">
+						</form>
+
 				<br>
 				<?php } 
 				}else {?>

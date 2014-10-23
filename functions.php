@@ -318,13 +318,11 @@
 		$stmt->execute();
 		$score = $stmt->fetchColumn();
 
-		$addpoint = $score +2;
+		$addpoint = $score +20;
 
 		$sql = "UPDATE user SET score = $addpoint";
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
-
-
 
 	}
 
