@@ -9,8 +9,9 @@
 	$myQuestions = addQuestionHistory($_GET['id']);
 	$myAnswers = addAnswerHistory($_GET['id']);
 
+
 /*	echo "<pre>";
-	print_r ($myQuestions);
+	print_r ($myAnswersQuestions);
 	echo "</pre>";*/
 
 	$avatarDefault = "perso10.jpg";
@@ -71,9 +72,16 @@ include("inc/nav.php");
 					<p>Id question : <?php echo $myQuestion["id"]; ?></p>	
 					<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="ma question"><?php echo $myQuestion['title']; ?></a></p>
 				</div>	
-				<p>Les réponses :</p>
-				<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="commentaire"></a></p>
-
+					<p>*** Les réponses :</p>
+					<?php 
+					//appel de la fonction 
+					$myAnswersQuestions = addAnswerOfQuestionHistory($myQuestion["id"]);
+					foreach ($myAnswersQuestions as $myAnswersQuestion) { ?>
+						<label for="voter">
+							<input type="radio" name="voter" value="voter">
+							<span><?php echo $myAnswersQuestion['content']; ?></span>
+						</label>
+					<?php } ?>
 				<br>
 				<?php } 
 				}else {?>

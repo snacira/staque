@@ -276,7 +276,7 @@
 		global $dbh;
 
 		$sql = "SELECT * FROM answer
-				WHERE user_id = :id";
+				WHERE question_id = :id";
 				
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(":id", $id);
@@ -302,3 +302,29 @@
 		return $myAnswerHistory;
 
 	}
+
+
+	/*************** VOTER / choisir la meilleure réponse *******************/
+	function chooseBestAnswer(){
+		global $dbh;
+
+		/*Ajout de points*/ 
+		$user = $_SESSION['user']['id'];
+
+		$sql = "SELECT score FROM user
+				WHERE id = $user";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$score = $stmt->fetchColumn();
+
+		$addpoint = $score +2;
+
+		$sql = "UPDATE user SET score = $addpoint";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+
+
+
+	}
+
