@@ -16,63 +16,46 @@
 
 	$nbAnswers=nbRep($id);
 
-	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,points,image FROM question
-					JOIN user ON question.user_id=user.id 
-					WHERE question.id=:id";
+	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,	points,image FROM question
+			JOIN user ON question.user_id=user.id 
+			WHERE question.id=:id";
 					
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
-				$question = $stmt->fetch();
-				//print_r($question);
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindValue(":id",$id);
+	$stmt->execute();
+	$question = $stmt->fetch();
+	//print_r($question);
 
 
 	$vues=$question['vues']+1;
 
 	$sql = "UPDATE question
-					SET vues=$vues
-					WHERE id=:id";
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
+			SET vues=$vues
+			WHERE id=:id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindValue(":id",$id);
+	$stmt->execute();
 
 
-	$sql = "SELECT comment FROM comment
-					JOIN question ON questionOrAnswer_id=question.id 
-
-					WHERE question.id=:id AND questionOrAnswer=0";
+	$sql = "SELECT comment,comment.id FROM comment
+			JOIN question ON questionOrAnswer_id=question.id 
+			WHERE question.id=:id AND questionOrAnswer=0";
 					
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
-				$comments = $stmt->fetchAll();
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindValue(":id",$id);
+	$stmt->execute();
+	$commentsQ = $stmt->fetchAll();
 
 	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated,image,answer.id FROM answer
-					JOIN question ON question_id=question.id 
-					JOIN user ON user.id=answer.user_id
-					WHERE question.id=:id";
+			JOIN question ON question_id=question.id 
+			JOIN user ON user.id=answer.user_id
+			WHERE question.id=:id";
 					
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
-				$answers = $stmt->fetchAll();
-				//print_r($answers);	
-
-	
-	$sql = "SELECT comment FROM comment
-					JOIN question ON questionOrAnswer_id=question.id 
-					JOIN answer ON questionOrAnswer_id=answer.id 
-
-					WHERE question.id=:id AND questionOrAnswer=1 " ; 
-					
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
-				$commentsA = $stmt->fetchAll();			
-
-
-
-
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindValue(":id",$id);
+	$stmt->execute();
+	$answers = $stmt->fetchAll();
+	//print_r($answers);	
 
 
 ?>
@@ -87,13 +70,14 @@
 		</div>
 		<div id="moins">
 		 	<span>-</span>
-		</div>
-		
+		</div>		
 	</div>
+
 	<div id="statsQ">
 		<p>Posée le : <?= $question['dateCreated'];?></p>
 		<p>Vue :<?= $question['vues']+1;?> fois</p>
 	</div>
+
 	<div id="Q">
 		<h3><?php echo $question['title'];?></h3>
 
@@ -105,11 +89,11 @@
 		<img src="img/<?php echo $question['image'];?>"/>
 		<p> Le <?php echo $question['dateCreated'];?></p>
 
-		<a href="comment.php?id=<?php echo $id; ?>">Commenter la question</a>
+		<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0);?>">Commenter la question</a>
 		<p id="com">Commentaires de la question</p>
-			<?php foreach ($comments as $comment){ ?>
-			<p><?php echo $comment['comment'];?></p>
-			<?php } ?>
+		<?php foreach ($commentsQ as $commentQ){ ?>
+			<p><?php echo $commentQ['comment'];?></p>
+		<?php } ?>
 
 		<p id="rep"><?php echo $nbAnswers;?> réponses</p>
 
@@ -125,54 +109,39 @@
 				</div>
 				<div class="moins">
 				 	<span>-</span>
-			</div>
-		
-		<div class="contenuRep">
-			<p><?php echo $answer['content'];?></p>
-			<p><?php echo $answer['pseudo'];?></p>
-			<p><?php echo $answer['dateCreated'];?></p>
-			<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (1); ?>">Commenter la réponse</a>
-<p>Commentaires de la réponse</p>	
-			<?php foreach ($commentsA as $commentA){ ?>
-			<p><?php echo $commentA['comment'];?></p>
-			<?php } ?>
+				</div>
+			</div>		
+			<div class="contenuRep">
+				<p><?php echo $answer['content'];?></p>
+				<p><?php echo $answer['pseudo'];?></p>
+				<p><?php echo $answer['dateCreated'];?></p>
+				<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (1); ?>">Commenter la réponse</a>
 
-		</div>	
-			<?php } ?>
-
-
-		<div id="votreReponse">
-			<p>Votre réponse</p>
-			
-
-
-		<form method="POST">
-				
-						
-			<label class="questionarea">
-				<textarea name="content" placeholder="Répondre a la question"></textarea>
-			</label>
-			
-			<label class="submit"><input type="submit" value="Envoyer votre réponse"></label>
-			
-				<?php 
-					if (!empty($errors)){
-							echo '<ul class="errors">';
-								foreach($errors as $error){
-							echo '<li>'.$error.'</li>';
+				<p>Commentaires de la réponse</p>						
+			</div>	
+			<div id="votreReponse">
+				<p>Votre réponse</p>
+				<form method="POST">								
+					<label class="questionarea">
+						<textarea name="content" placeholder="Répondre a la question"></textarea>
+					</label>					
+					<label class="submit"><input type="submit" value="Envoyer votre réponse"></label>					
+					<?php 
+						if (!empty($errors)){
+								echo '<ul class="errors">';
+									foreach($errors as $error){
+								echo '<li>'.$error.'</li>';
+							}
+							echo '</ul>';
 						}
-						echo '</ul>';
-					}
-				?>
-		</form>
-		
+					?>
+				</form>			
+			</div>
 		</div>
+	<?php } ?>
+		<a href="index.php" id="back">back</a>
 
 	</div>
-	
-	<a href="index.php" id="back">back</a>
-
-
 
 </section>
 
