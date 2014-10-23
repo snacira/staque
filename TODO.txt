@@ -1,0 +1,36 @@
+
+
+
+Je suis connecté:
+	CSS
+question detail
+question list/home
+poser question
+ajouter une reponse
+commenter la question
+commenter la reponse
+
+
+	DONE
+- header/nav
+- home -> liste des questions
+
+	TODO 
+
+afficher l'historique : questions, réponses, commentaire, mes points, mes votes (Nacira)
+voter pour la meilleure réponse de sa question
+voter pour une question et/ou une réponse
+
+traiter les scores + et - (Rabia)
+	
+autocomplétion des tags	
+
+
+
+	Plus tard
+- home -> liste des questions: 
+une vue par question et utilisateur
+	
+- afficher avatar autre utilisateur
+- afficher avatar liste question et question/réponse
+- footer : ajouter le footer avec faux liens (Nacira)
