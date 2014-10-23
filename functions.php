@@ -203,7 +203,7 @@
 					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
 					$stmt->execute();
 
-			$lastId = $dbh->lastInsertId();
+			$lastId = $questionOrAnswer_id;
 			header("Location:detail_question.php?id=".$lastId);
 			die();
 
