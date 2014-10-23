@@ -193,11 +193,17 @@
 						VALUES ('',:comment,:qOrA ,:questionOrAnswer_id, :user_id)";
 
 				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":comment", $comment);
-				$stmt->bindValue(":qOrA", $qOrA);
-				$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
-				$stmt->bindValue(":user_id", $_SESSION['user']['id']);
-				$stmt->execute();
+
+					$stmt->bindValue(":comment", $comment);
+					$stmt->bindValue(":qOrA", $qOrA);
+					$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
+					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+					$stmt->execute();
+
+			$lastId = $questionOrAnswer_id;
+			header("Location:detail_question.php?id=".$lastId);
+			die();
+
 			}
 		}
 	}
