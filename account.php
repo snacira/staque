@@ -6,9 +6,13 @@
 	include("functions.php");
 
 	$mesInfosPerso = infosPerso($_GET['id']);
+	$myQuestions = addQuestionHistory($_GET['id']);
+	$myAnswers = addAnswerHistory($_GET['id']);
 
 /*	echo "<pre>";
-print_r ($mesInfosPerso);*/
+	print_r ($myQuestions);
+	echo "</pre>";*/
+
 	$avatarDefault = "perso10.jpg";
 
 include("inc/header.php");
@@ -50,14 +54,52 @@ include("inc/nav.php");
 			<br>
 
 			<p class="activity"><span>Score : </span><span><?php echo $mesInfosPerso["score"]; ?></span></p>
-			<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>
-
 
 			<p class="activity"><span>Inscrit le : </span><span><?php echo $mesInfosPerso["dateRegistred"]; ?></span></p>		
 
 			<!-- <p class="activity"><span>Connecté le : </span><span><?php echo $mesInfosPerso["dateConnected"]; ?></span></p> -->
 
-			<p class="activity"><span>Mis à jour le : </span><span><?php echo $mesInfosPerso["dateModified"]; ?></span></p>			
+			<p class="activity"><span>Mis à jour le : </span><span><?php echo $mesInfosPerso["dateModified"]; ?></span></p>		
+
+			<h2>Mon historique</h2>
+				<h3>Mes questions</h3>
+
+				<?php if(!empty($myQuestions)){
+
+				foreach ($myQuestions as $myQuestion) { ?>
+				<div class="maQuestion">
+					<p>Id question : <?php echo $myQuestion["id"]; ?></p>			
+					<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="ma question"><?php echo $myQuestion['title']; ?></a></p>
+					<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>	
+				</div>	
+				<br>
+				<?php } 
+				}else {?>
+
+					<p>Vous n'avez pas encore de questions</p>
+
+				<?php } ?>
+
+				<h3>Mes réponses</h3>
+
+
+				<?php if(!empty($myAnswers)){
+
+				foreach ($myAnswers as $myAnswer) { ?>
+				<div class="maQuestion">
+					<p>Id question : <?php echo $myAnswer["id"]; ?></p>			
+					<p><a href="detail_question.php?id=<?php echo $myAnswer['id']; ?>" title="ma question"><?php echo $myAnswer['title']; ?></a></p>
+					<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>	
+				</div>	
+				<br>
+				<?php } 
+				}else {?>
+
+					<p>Vous n'avez pas encore de réponses</p>
+
+				<?php } ?>
+
+
 		</div>
 		<br>
 		<!-- A afficher que si c'est mon compte -->
