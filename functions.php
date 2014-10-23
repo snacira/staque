@@ -199,6 +199,10 @@ function addcomment(){
 					$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
 					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
 					$stmt->execute();
+
+			$lastId = $dbh->lastInsertId();
+			header("Location:detail_question.php?id=".$lastId);
+			die();
 			}
 		}
 	}
