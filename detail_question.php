@@ -17,7 +17,7 @@
 	$nbAnswers=nbRep($id);
 
 	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,points,image FROM question
-					JOIN user ON question.user_id=user.id 
+					LEFT JOIN user ON question.user_id=user.id 
 					WHERE question.id=:id";
 					
 				$stmt = $dbh->prepare($sql);
@@ -47,9 +47,10 @@
 				$stmt->execute();
 				$comments = $stmt->fetchAll();
 
+	
 	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated,image,answer.id FROM answer
 					JOIN question ON question_id=question.id 
-					JOIN user ON user.id=answer.user_id
+					LEFT JOIN user ON user.id=answer.user_id
 					WHERE question.id=:id";
 					
 				$stmt = $dbh->prepare($sql);

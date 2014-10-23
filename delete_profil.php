@@ -1,6 +1,7 @@
 <?php 
-
-	$id = $_GET['user'];
+	
+	session_start();
+	$id = $_SESSION['user']['id'];
 
 	include("db.php");
 
@@ -12,5 +13,5 @@
 
 	$stmt->execute();
 
-	header("location: index.php")
+	header("location: logout.php")
 	?>
