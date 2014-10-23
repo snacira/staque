@@ -138,7 +138,6 @@
 				$errors[] = "Veuillez rédiger une question !";
 			}
 
-
 			if (empty($errors)){
 
 				$sql = "INSERT INTO question(id, title, content, user_id, dateCreated, dateModified,tags)
@@ -172,8 +171,6 @@
 	}
 
 	function addcomment(){
-
-		$qOrA = "";
 
 		global $dbh;
 		global $errors;
@@ -251,6 +248,8 @@
 		}
 	}
 
+	/***************** MON HISTORIQUE ************************/
+	//MES QUESTIONS
 	function addQuestionHistory($id){
 		global $dbh;
 
@@ -264,6 +263,8 @@
 		return $myQuestionHistory;
 
 	}
+
+	//LES REPONSES A MES QUESTIONS
 	function addAnswerOfQuestionHistory($id){
 		global $dbh;
 
@@ -277,7 +278,10 @@
 		return $answerOfQuestionHistory;
 
 	}
+	
+	//LES COMMENTAIRES DE MES REPONSES
 
+	//MES REPONSES
 	function addAnswerHistory($id){
 		global $dbh;
 
