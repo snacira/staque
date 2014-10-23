@@ -16,8 +16,9 @@
 	$offset = ($page-1)*$numPerPage;
 
 	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,	content,vues 
-			FROM question JOIN user ON question.user_id=user.id 
+			FROM question LEFT JOIN user ON question.user_id=user.id 
 			ORDER BY question.id $direction LIMIT :offset,$numPerPage";
+			//LEFT = Tout afficher
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":offset", ($page-1)*2, PDO::PARAM_INT);

@@ -145,7 +145,7 @@
 			<p>Votre réponse</p>
 			
 
-
+<?php if(isset($_SESSION['user'])){ ?>
 		<form method="POST">
 				
 						
@@ -165,10 +165,23 @@
 					}
 				?>
 		</form>
+
 		
 		</div>
 
 	</div>
+
+	<?php } else{ ?>
+	
+
+		<div class="deconnecter">
+		<div id="errorLogin">
+			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour répondre a une question</h3>
+		</div>
+	
+
+	<?php } ?>
+
 	
 	<a href="index.php" id="back">back</a>
 

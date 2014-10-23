@@ -10,9 +10,13 @@
 
 	include("inc/header.php");
 	include("inc/footer.php"); 
+
+	$id = $_GET['id']
 ?>
 
 <div class="container">
+	
+	<?php if(isset($_SESSION['user'])){ ?>
 	<form method="POST">
 				
 				<label>
@@ -32,4 +36,16 @@
 		}
 	?>
 	</form>
+
+	<?php } else{ ?>
+
+	<div class="deconnecter">
+		<div id="errorLogin">
+			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour ajouter un commantaire</h3>
+	</div>
+
+	<?php } ?>
+
+	<a href="detail_question.php?id=<?php echo $id ?>" id="back">back</a>
+
 </div>
