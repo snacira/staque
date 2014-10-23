@@ -20,7 +20,7 @@
 	<?php if(isset($_SESSION['user'])){ ?>
 	
 	<div class="connecter">
-		<h1>Poser une question</h1>
+		<h2>Poser une question</h2>
 		
 		<form id="formulairedequestion" method="POST">
 				<label>Titre
@@ -51,8 +51,8 @@
 			else{ ?>
 
 	<div class="deconnecter">
-		<div id="conectervous">
-			<h3><a href="login.php">Connectez vous</a> ou <a href="register.php">crée un compte</a> pour poser une question</h3>
+		<div id="errorLogin">
+			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour poser une question</h3>
 		</div>
 	</div> <?php } ?>
 

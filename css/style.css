@@ -54,14 +54,9 @@ table {
 body{
 	font: 300 1.3rem/1.3rem Oswald;
 	color: #000;
-	background-color: #f3f2f2;
+	background: url(../img/fond.png) scroll repeat 0 0 #f3f2f2;
 }
-h1{
-	margin: 15px 0;
-	text-transform: uppercase;
-	font: 300 2rem/2rem Oswald;
-	text-align: center;
-}
+
 h2{
 	text-transform: uppercase;
 	font-size: 20px;
@@ -88,23 +83,73 @@ h3{
 }
 /************ HEADER  *******************/
 header{
-	background-color: #414a51;
+	background-color: #22313F;
 	color: #fff;
-	padding: 0 20px;
 	font-size: 1em;
-	padding: 10px;
+}
+header .connexion{
+	height: 30px;
+	background-color: #34495E;
+	padding: 10px 20px;
+	border-bottom: 2px solid #fff;
 }
 
-header .connexion{
-	height: 40px;
+h1{
+	text-transform: uppercase;
+	font: 300 2rem/2rem Shadows Into Light;
+	text-align: center;
+	color: #F1C40F;
+	position: relative;
 }
+h1::before{
+	content: "";
+	background: url(../img/staque-logo.png) scroll no-repeat top center transparent;
+	width: 41px;
+	height: 31px;	
+	position: absolute;
+	top: 0;
+	right: -48px;
+}
+
 .connexion #logo {
 	float: left;
 }
+.connexion #logo:hover{
+	text-decoration: none;
+}
 .connexion #login {
 	float: right;
+	font: 200 13px Open Sans, sans-serif;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+.connexion #login a.login {
+	position: relative;
+	margin-right: 20px;
+}
+.connexion #login a.register {
+	position: relative;
 }
 
+.navigation .liens a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	transform: translateY(0px);
+	text-decoration: none;
+	border-bottom: 5px solid #E87E04;
+	padding-bottom: 12px;
+}
+
+.connexion #login a.login::before {
+	content: "";
+	background: url(../img/login.png) no-repeat 0 0 transparent;
+	width: 8px;
+	height: 10px;
+	position: absolute;
+	top: 3px;
+	left: -14px;
+}
 .connexion a, 
 .navigation a{
 	color: #fff;
@@ -113,21 +158,65 @@ header .connexion{
 
 .connexion a:hover, 
 .navigation a:hover{
-	color: #ccc;
+	text-decoration: underline;
 }
 
 header .navigation{
-	line-height: 40px;
-	height: 40px;
+	line-height: 60px;
+	height: 60px;
 	clear: both;
+	padding: 0 20px;
+	font-family: PT Sans;
 }
 
 .navigation .liens{
 	float: left;
+	font: 300 0.9rem/0.9rem;
 }
 .navigation .liens a{
 	margin: 0 10px 0 0;
+	font-size: 15px;
+	font-weight: 300;
+	text-transform: uppercase;
+	position: relative;
 }
+
+/* ajout de la barre orange en rollover avec transition */
+.connexion #login a.login::after,
+.connexion #login a.register::after,
+.navigation .liens a::after {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	content: '';
+	opacity: 0;
+	padding-bottom: 10px;
+	border-bottom: 5px solid #E87E04;
+	-webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+	-moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
+	transition: height 0.3s, opacity 0.3s, transform 0.3s;
+	-webkit-transform: translateY(-10px);
+	-moz-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+.connexion #login a.login:hover,
+.connexion #login a.register:hover,
+.navigation .liens a:hover{ text-decoration: none; } 
+
+.connexion #login a.login:hover::after,
+.connexion #login a.login:focus::after,
+.connexion #login a.register:hover::after,
+.connexion #login a.register:focus::after,
+.navigation .liens a:hover::after,
+.navigation .liens a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
 .navigation #recherche{
 	float: right;
 }
@@ -140,19 +229,19 @@ nav .icon{
 	position: relative;
 	width: 8px;
 	height: 3px;
-	background-color: #534441;
+	background-color: #E87E04;
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 	left: 222px;
-	top: 24px;
+	top: 33px;
 	z-index: 1;	
 }
 nav .icon::before {
 	content: "";
-	border: 2px solid #534441;
+	border: 2px solid #E87E04;
 	position: absolute;
 	top: -4px;
 	left: -11px;
@@ -161,24 +250,61 @@ nav .icon::before {
 	height: 8px;
 	border-radius: 50%;
 }
+.addQuestionBtn{
+	color: #fff;
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+	border: 3px solid #ffffff;
+	padding: 3px 40px;
+	line-height: 20px;
+	margin: 5px 0 0 25px;
+	border-radius: 3px;
+}
+.addQuestionBtn::after{ content:""; display: none; }
+a.addQuestionBtn:hover{
 
+color: #22313F;
+background-color: #ffffff;
+text-decoration: none;
 
+}
 
 /************ BODY  *******************/
 
 /*présentation*/
 
 #presentation{
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
+	height: auto;
+	background-color: #E87E04;
+	color: #fff;
 	text-align: center;
+	padding: 20px;
+	font-family: PT Sans;
+	border-bottom: 5px solid #fff;
 }
+#presentation h2{
+	font-weight: 700;
+	font-size: 3rem;
+	font-family: Oswald;
+	text-shadow: 2px 2px #6E0E0E;
+	letter-spacing: 6px;
 
+}
+#presentation h3{
+	font-size: 37px;
+	text-shadow: 2px 2px #fff;
+	color: #6E0E0E;
+	letter-spacing: 5px;
+	margin-top: 10px;
+}
 #presentation p{
-	font-style: 
-}
+	font-size: 14px;
+	width: 31%;
+	margin:20px auto;
+	text-align: justify;
 
+}
 
 .container{
 	/*text-align: left;*/
@@ -342,9 +468,12 @@ h3.titreQuestion{
 
 /*fomulaire si deconecter*/
 
-#conectervous{
-	border: 3px solid #f3ae73;
-	background-color: rgba(255, 255, 53, 0.34);
+#errorLogin{
+	border: 3px solid #22313F;
+	padding: 10px;
+	background-color: #f3f2f2;
+	color: #E87E04;
+	border-radius: 3px;
 }
 
 /*** mon compte ***/
