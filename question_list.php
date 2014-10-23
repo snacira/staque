@@ -41,7 +41,6 @@
 	<div class="topQuestionWrap">		
 		<div class="clearboth colLeft">
 			<ul class="compteurs">
-				<li><strong>0</strong> votes</li>
 				<li><strong><?php echo $nbAnswers;?></strong> réponses</li>
 				<li><strong><?= $question['vues'];?></strong> vues</li>
 			</ul>
@@ -53,10 +52,8 @@
 
 			<p><?php echo substr($question['content'],0,300)."..."; ?></p>
 
-			<div class="tags">
-				<a href="" id="tags" title="">   
-					<?= $question['tags'];?>  
-				</a>
+			<div class="tags"> 
+				<?= $question['tags'];?>  
 			</div> 
 
 			<div class="user">
