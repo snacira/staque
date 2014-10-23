@@ -173,10 +173,13 @@
 
 	function addcomment(){
 
+		$qOrA = "";
+
 		global $dbh;
 		global $errors;
+
 		$questionOrAnswer_id = $_GET['id'];
-		$qOrA=$_GET['q_a'];
+		$qOrA = $_GET['q_a'];
 		//echo($qOrA);
 
 		if (!empty($_POST)){
@@ -259,6 +262,19 @@
 		$stmt->execute();
 		$myQuestionHistory = $stmt->fetchAll();
 		return $myQuestionHistory;
+
+	}
+	function addAnswerOfQuestionHistory($id){
+		global $dbh;
+
+		$sql = "SELECT * FROM answer
+				WHERE user_id = :id";
+				
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id", $id);
+		$stmt->execute();
+		$answerOfQuestionHistory = $stmt->fetchAll();
+		return $answerOfQuestionHistory;
 
 	}
 

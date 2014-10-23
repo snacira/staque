@@ -68,10 +68,12 @@ include("inc/nav.php");
 
 				foreach ($myQuestions as $myQuestion) { ?>
 				<div class="maQuestion">
-					<p>Id question : <?php echo $myQuestion["id"]; ?></p>			
+					<p>Id question : <?php echo $myQuestion["id"]; ?></p>	
 					<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="ma question"><?php echo $myQuestion['title']; ?></a></p>
-					<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>	
 				</div>	
+				<p>Les réponses :</p>
+				<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="commentaire"></a></p>
+
 				<br>
 				<?php } 
 				}else {?>
@@ -88,7 +90,7 @@ include("inc/nav.php");
 				foreach ($myAnswers as $myAnswer) { ?>
 				<div class="maQuestion">
 					<p>Id question : <?php echo $myAnswer["id"]; ?></p>			
-					<p><a href="detail_question.php?id=<?php echo $myAnswer['id']; ?>" title="ma question"><?php echo $myAnswer['title']; ?></a></p>
+					<p><a href="detail_question.php?id=<?php echo $myAnswer['id']; ?>" title="ma question"><?php echo $myAnswer['content']; ?></a></p>
 					<p class="activity"><span>Votes : </span><span><?php echo $mesInfosPerso["vote"]; ?></span></p>	
 				</div>	
 				<br>
