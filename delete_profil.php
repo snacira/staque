@@ -4,7 +4,7 @@
 
 	include("db.php");
 
-	$sql ="DELETE from user WHERE id = :id";
+	$sql ="DELETE from user WHERE id =$id";
 
 	$stmt = $dbh->prepare($sql);
 

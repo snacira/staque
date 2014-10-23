@@ -17,6 +17,7 @@
 <div class="container">
 	
 	<?php if(isset($_SESSION['user'])){ ?>
+	
 	<form method="POST">
 				
 				<label>
@@ -41,7 +42,7 @@
 
 	<div class="deconnecter">
 		<div id="errorLogin">
-			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour ajouter un commantaire</h3>
+			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour ajouter un commentaire</h3>
 	</div>
 
 	<?php } ?>
