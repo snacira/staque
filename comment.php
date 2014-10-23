@@ -11,7 +11,8 @@
 	include("inc/header.php");
 	include("inc/footer.php"); 
 
-	$id = $_GET['id']
+	$id = $_GET['id'];
+	$idQ = $_GET['id_q'];
 ?>
 
 <div class="container">
@@ -47,6 +48,6 @@
 
 	<?php } ?>
 
-	<a href="detail_question.php?id=<?php echo $id ?>" id="back">back</a>
+	<a href="detail_question.php?id=<?php echo $idQ ?>" id="back">back</a>
 
 </div>

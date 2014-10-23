@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
+	<link rel="icon" type="image/png" href="img/staque-logo.png" />
 	<meta name="description" content="">
 	
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
