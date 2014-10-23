@@ -117,9 +117,31 @@
 				<p><?php echo $answer['dateCreated'];?></p>
 				<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (1); ?>">Commenter la réponse</a>
 
-				<p>Commentaires de la réponse</p>						
-			</div>	
+				<p>Commentaires de la réponse</p>	
+
+				<?php 
+				$sql = "SELECT comment FROM comment
+							
+							WHERE comment.questionOrAnswer_id=:id AND questionOrAnswer=1";
+
+				$stmt = $dbh->prepare($sql);
+				$stmt->bindValue(":id",$answer['id']);
+				$stmt->execute();
+				$commentsR = $stmt->fetchAll();	
+				//print_r($commentsR);
+				//die();
+
+					foreach ($commentsR	as $commentR) { ?>
+						<p><?php echo $commentR['comment'];?></p>
+					<?php }?>	
+
+
+
+							
+							</div>	
+				<?php } ?>
 			<div id="votreReponse">
+				
 				<p>Votre réponse</p>
 				<form method="POST">								
 					<label class="questionarea">
@@ -138,7 +160,7 @@
 				</form>			
 			</div>
 		</div>
-	<?php } ?>
+	
 		<a href="index.php" id="back">back</a>
 
 	</div>
