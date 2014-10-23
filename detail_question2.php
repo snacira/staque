@@ -3,7 +3,7 @@
 	include("inc/nav.php");?>
 
 <section class="container">
-	<h1 class="title">Titre de la Question</h1>
+	<h2 class="title">Titre de la Question</h2>
 	<div class="borderbottom"></div>
 	<div class="detail">
 		<div class="note">0</div>
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 
-	<h2 id="reponse" class="clearboth">Réponse</h2>
+	<h3 id="reponse" class="clearboth">Réponse</h3>
 
 	<div class="borderbottom"></div>
 	<div id="detail">

@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/carousel.css"/>
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 	<link href="css/form.css" type="text/css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Abel|PT+Sans+Narrow|PT+Sans|Muli|Roboto|Oswald|Yanone+Kaffeesatz|Lato|Open+Sans+Condensed' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Abel|PT+Sans+Narrow|PT+Sans|Muli|Roboto|Oswald|Yanone+Kaffeesatz|Lato|Open+Sans+Condensed|Shadows+Into+Light|Ubuntu+Condensed|Francois+One|Cuprum' rel='stylesheet' type='text/css'>
 
 
 

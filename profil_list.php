@@ -17,7 +17,7 @@
 
 <section class="container">
 
-	<h1>Utilisateurs</h1>
+	<h2>Utilisateurs</h2>
 
 	<?php foreach($profils as $profil): ?>
 		<div id="profil">
@@ -36,7 +36,7 @@
 			</figure>
 			<div class="user-details">
 
-	            <h4><a href="account.php?id=<?php echo $profil["id"]; ?>"><?php echo $profil["pseudo"]; ?></a></h4>
+	            <h2><a href="account.php?id=<?php echo $profil["id"]; ?>"><?php echo $profil["pseudo"]; ?></a></h2>
 	            <span class="user-location"><?php echo $profil["location"]; ?></span><br>
 	            <!-- <span class="reputation-score"><?php echo $profil["score"]; ?></span> -->
 	        </div>
