@@ -103,6 +103,23 @@
 		global $dbh;
 		global $errors;
 
+		/*Ajout de points*/ 
+		$user = $_SESSION['user']['id'];
+
+		$sql = "SELECT score FROM user
+				WHERE id = $user";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$score = $stmt->fetchColumn();
+
+		$addpoint = $score +2;
+
+		$sql = "UPDATE user SET score = $addpoint";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		/* fin de l'ajout*/
+
 		if (!empty($_POST)){
 
 			$title = $_POST['title'];
@@ -191,6 +208,24 @@ function addanswer(){
 		global $dbh;
 		global $errors;
 		$question_id = $_GET['id'];
+
+		
+		/*Ajout de points*/ 
+		$user = $_SESSION['user']['id'];
+
+		$sql = "SELECT score FROM user
+				WHERE id = $user";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$score = $stmt->fetchColumn();
+
+		$addpoint = $score +4;
+
+		$sql = "UPDATE user SET score = $addpoint";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		/* fin de l'ajout*/
 
 		if (!empty($_POST)){
 
