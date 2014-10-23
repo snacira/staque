@@ -1,7 +1,7 @@
-$("#voteQ #plus").on("click",this.monPointsQ)
-	
 
-
-monPointsQ:function(){
-	console.log("points Q")
-}
+$(document).ready(function() {
+    $('#autocompletion').autocomplete({
+        serviceUrl: 'autocompletion.php',
+        dataType: 'json'
+    });
+});
