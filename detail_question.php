@@ -93,7 +93,7 @@
 		<img src="img/<?php echo $question['image'];?>"/>
 		<p> Le <?php echo $question['dateCreated'];?></p>
 
-		<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0);?>">Commenter la question</a>
+		<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0); ?>&id_q=<?php echo $id ?>">Commenter la question</a>
 		<p id="com">Commentaires de la question</p>
 		<?php foreach ($commentsQ as $commentQ){ ?>
 			<p><?php echo $commentQ['comment'];?></p>
@@ -119,7 +119,7 @@
 				<p><?php echo $answer['content'];?></p>
 				<p><?php echo $answer['pseudo'];?></p>
 				<p><?php echo $answer['dateCreated'];?></p>
-				<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (1); ?>">Commenter la réponse</a>
+				<a href="comment.php?id=<?php echo $answer['id']; ?>&q_a=<?php echo (1); ?>&id_q=<?php echo $id ?>">Commenter la réponse</a>
 
 				<p>Commentaires de la réponse</p>	
 

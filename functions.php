@@ -178,6 +178,7 @@
 		$questionOrAnswer_id = $_GET['id'];
 		$qOrA = $_GET['q_a'];
 		//echo($qOrA);
+		$idQ = $_GET['id_q'];
 
 		if (!empty($_POST)){
 
@@ -201,7 +202,7 @@
 					$stmt->execute();
 
 			$lastId = $questionOrAnswer_id;
-			header("Location:detail_question.php?id=".$lastId);
+			header("Location:detail_question.php?id=".$idQ);
 			die();
 
 			}
