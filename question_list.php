@@ -16,8 +16,9 @@
 	$offset = ($page-1)*$numPerPage;
 
 	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,	content,vues 
-			FROM question JOIN user ON question.user_id=user.id 
+			FROM question LEFT JOIN user ON question.user_id=user.id 
 			ORDER BY question.id $direction LIMIT :offset,$numPerPage";
+			//LEFT = Tout afficher
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":offset", ($page-1)*2, PDO::PARAM_INT);
@@ -41,7 +42,6 @@
 	<div class="topQuestionWrap">		
 		<div class="clearboth colLeft">
 			<ul class="compteurs">
-				<li><strong>0</strong> votes</li>
 				<li><strong><?php echo $nbAnswers;?></strong> réponses</li>
 				<li><strong><?= $question['vues'];?></strong> vues</li>
 			</ul>
@@ -53,10 +53,8 @@
 
 			<p><?php echo substr($question['content'],0,300)."..."; ?></p>
 
-			<div class="tags">
-				<a href="" id="tags" title="">   
-					<?= $question['tags'];?>  
-				</a>
+			<div class="tags"> 
+				<?= $question['tags'];?>  
 			</div> 
 
 			<div class="user">

@@ -123,10 +123,13 @@ h1::before{
 	text-transform: uppercase;
 	margin-top: 10px;
 }
-.connexion #login a.login {
+.connexion #login a.login,
+.connexion #login a.userLogged{
 	position: relative;
 	margin-right: 20px;
 }
+
+.connexion #login a.logout,
 .connexion #login a.register {
 	position: relative;
 }
@@ -182,7 +185,9 @@ header .navigation{
 }
 
 /* ajout de la barre orange en rollover avec transition */
+.connexion #login a.userLogged::after,
 .connexion #login a.login::after,
+.connexion #login a.logout::after,
 .connexion #login a.register::after,
 .navigation .liens a::after {
 	position: absolute;
@@ -202,9 +207,17 @@ header .navigation{
 	transform: translateY(-10px);
 }
 .connexion #login a.login:hover,
+.connexion #login a.logout:hover,
 .connexion #login a.register:hover,
+.connexion #login a.userLogged:hover,
 .navigation .liens a:hover{ text-decoration: none; } 
 
+
+
+.connexion #login a.userLogged:hover::after,
+.connexion #login a.userLogged:focus::after,
+.connexion #login a.logout:hover::after,
+.connexion #login a.logout:focus::after,
 .connexion #login a.login:hover::after,
 .connexion #login a.login:focus::after,
 .connexion #login a.register:hover::after,
@@ -516,11 +529,20 @@ h3.titreQuestion{
 }
 
 /** modifier profil **/
-img.avatar{
+img.bxsliderAvatar {
 	border: 5px solid #fff;
 	border-radius: 50%;
 	padding: 7px;
 }
+img.selected {
+	border: 5px solid #E87E04;
+	border-radius: 50%;
+	padding: 7px;
+}
+img.bxsliderAvatar:hover {
+	border: 5px solid #F1C40F;
+}
+
 	/* custom input file*/
 input[type="file"]{
 	height: 30px;

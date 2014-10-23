@@ -103,6 +103,23 @@
 		global $dbh;
 		global $errors;
 
+		/*Ajout de points*/ 
+		$user = $_SESSION['user']['id'];
+
+		$sql = "SELECT score FROM user
+				WHERE id = $user";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$score = $stmt->fetchColumn();
+
+		$addpoint = $score +2;
+
+		$sql = "UPDATE user SET score = $addpoint";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		/* fin de l'ajout*/
+
 		if (!empty($_POST)){
 
 			$title = $_POST['title'];
@@ -118,7 +135,7 @@
 			}
 
 			if (empty($content)){
-					$errors[] = "Veuiller rediger une question !";
+				$errors[] = "Veuillez rédiger une question !";
 			}
 
 
@@ -134,28 +151,27 @@
 				$stmt->bindValue(":tags", $tags);
 				$stmt->execute();
 			
-			$lastId = $dbh->lastInsertId();
-			header("Location:detail_question.php?id=".$lastId);
-			die();
+				$lastId = $dbh->lastInsertId();
+				header("Location:detail_question.php?id=".$lastId);
+				die();
 			}
 		}
 	}
 
-
 	function nbRep($id){
-	global $dbh; 	
-	$sql = "SELECT COUNT(*) FROM answer
-					JOIN question ON question_id=question.id 
-					WHERE question.id=:id";
-					
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$id);
-				$stmt->execute();
-				$nbAnswers = $stmt->fetchColumn();
-				return $nbAnswers;
+		global $dbh; 	
+		$sql = "SELECT COUNT(*) FROM answer
+				JOIN question ON question_id = question.id 
+				WHERE question.id = :id";
+				
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id",$id);
+		$stmt->execute();
+		$nbAnswers = $stmt->fetchColumn();
+		return $nbAnswers;
 	}
 
-function addcomment(){
+	function addcomment(){
 
 		global $dbh;
 		global $errors;
@@ -168,7 +184,7 @@ function addcomment(){
 			$comment = $_POST['comment'];
 
 			if (empty($comment)){
-				$errors[] = "Ecriver un commentaire !";
+				$errors[] = "Ecrivez un commentaire !";
 			}
 
 			if (empty($errors)){
@@ -177,27 +193,45 @@ function addcomment(){
 						VALUES ('',:comment,:qOrA ,:questionOrAnswer_id, :user_id)";
 
 				$stmt = $dbh->prepare($sql);
-					$stmt->bindValue(":comment", $comment);
-					$stmt->bindValue(":qOrA", $qOrA);
-					$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
-					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
-					$stmt->execute();
+				$stmt->bindValue(":comment", $comment);
+				$stmt->bindValue(":qOrA", $qOrA);
+				$stmt->bindValue(":questionOrAnswer_id", $questionOrAnswer_id);
+				$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+				$stmt->execute();
 			}
 		}
 	}
 
-function addanswer(){
+	function addanswer(){
 
 		global $dbh;
 		global $errors;
 		$question_id = $_GET['id'];
+
+		
+		/*Ajout de points*/ 
+		$user = $_SESSION['user']['id'];
+
+		$sql = "SELECT score FROM user
+				WHERE id = $user";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$score = $stmt->fetchColumn();
+
+		$addpoint = $score +4;
+
+		$sql = "UPDATE user SET score = $addpoint";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		/* fin de l'ajout*/
 
 		if (!empty($_POST)){
 
 			$answer = $_POST['content'];
 
 			if (empty($answer)){
-				$errors[] = "Ecriver une reponse !";
+				$errors[] = "Ecrivez une reponse !";
 			}
 
 			if (empty($errors)){
@@ -206,11 +240,38 @@ function addanswer(){
 						VALUES ('',:content, :user_id, :question_id, NOW(), NOW())";
 
 				$stmt = $dbh->prepare($sql);
-					$stmt->bindValue(":content", $answer);
-					$stmt->bindValue(":user_id", $_SESSION['user']['id']);
-					$stmt->bindValue(":question_id", $question_id);
-					$stmt->execute();
+				$stmt->bindValue(":content", $answer);
+				$stmt->bindValue(":user_id", $_SESSION['user']['id']);
+				$stmt->bindValue(":question_id", $question_id);
+				$stmt->execute();
 			}
 		}
+	}
+
+	function addQuestionHistory($id){
+		global $dbh;
+
+		$sql = "SELECT * FROM question
+				WHERE user_id = :id";
+				
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id", $id);
+		$stmt->execute();
+		$myQuestionHistory = $stmt->fetchAll();
+		return $myQuestionHistory;
+
+	}
+
+	function addAnswerHistory($id){
+		global $dbh;
+
+		$sql = "SELECT * FROM answer
+				WHERE user_id = :id";
+				
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id", $id);
+		$stmt->execute();
+		$myAnswerHistory = $stmt->fetchAll();
+		return $myAnswerHistory;
 
 	}

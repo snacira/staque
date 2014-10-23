@@ -16,9 +16,11 @@
 
 	$nbAnswers=nbRep($id);
 
-	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,	points,image FROM question
-			JOIN user ON question.user_id=user.id 
-			WHERE question.id=:id";
+
+	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,content,vues,points,image FROM question
+					LEFT JOIN user ON question.user_id=user.id 
+					WHERE question.id=:id";
+
 					
 	$stmt = $dbh->prepare($sql);
 	$stmt->bindValue(":id",$id);
@@ -46,10 +48,12 @@
 	$stmt->execute();
 	$commentsQ = $stmt->fetchAll();
 
+	
 	$sql = "SELECT answer.content, answer.user_id,pseudo, answer.dateCreated,image,answer.id FROM answer
-			JOIN question ON question_id=question.id 
-			JOIN user ON user.id=answer.user_id
-			WHERE question.id=:id";
+					JOIN question ON question_id=question.id 
+					LEFT JOIN user ON user.id=answer.user_id
+					WHERE question.id=:id";
+
 					
 	$stmt = $dbh->prepare($sql);
 	$stmt->bindValue(":id",$id);
@@ -131,16 +135,20 @@
 				//print_r($commentsR);
 				//die();
 
-					foreach ($commentsR	as $commentR) { ?>
+
+				foreach ($commentsR	as $commentR) { ?>
 						<p><?php echo $commentR['comment'];?></p>
-					<?php }?>	
+				<?php }?>	
 
-
-
-							
-							</div>	
+						
+			</div>	
 				<?php } ?>
+
 			<div id="votreReponse">
+
+<?php if(isset($_SESSION['user'])){ ?>
+		
+
 				
 				<p>Votre réponse</p>
 				<form method="POST">								
@@ -156,10 +164,26 @@
 							}
 							echo '</ul>';
 						}
+
 					?>
 				</form>			
 			</div>
 		</div>
+
+					
+
+	<?php } else{ ?>
+	
+
+		<div class="deconnecter">
+		<div id="errorLogin">
+			<h3><a href="login.php">Connectez-vous</a> ou <a href="register.php">créez un compte</a> pour répondre a une question</h3>
+		</div>
+	
+
+	<?php } ?>
+
+
 	
 		<a href="index.php" id="back">back</a>
 

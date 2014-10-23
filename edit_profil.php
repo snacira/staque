@@ -124,7 +124,7 @@ include("inc/nav.php");
 				</div>
 				<div class="field_container">
 					<span>Birthday</span>
-					<input type="text" id="birthday" name="birthday" value="<?php echo $mesInfosPerso["birthday"]; ?>"  placeholder="dd/mm/yyyy" />
+					<input type="text" id="birthday" name="birthday" value="<?php echo $mesInfosPerso["birthday"]; ?>"  placeholder="yyyy/mm/dd" />
 				</div>
 				<div class="field_container">
 					<span>Métier</span>

@@ -12,8 +12,8 @@
 			<?php 
 
 			if (userIsLogged()){
-				echo "Bonjour " . "<a href='account.php?id=" . $_SESSION['user']["id"] ."'>" . $_SESSION['user']['pseudo'] . " !" ;
-				echo " - " . '<a href="logout.php" title="Logout !" id="logout">Logout</a>';
+				echo "<a href='account.php?id=" . $_SESSION['user']["id"] ."' class='userLogged'>Bonjour " . $_SESSION['user']['pseudo'] . " !" ;
+				echo '<a href="logout.php" title="Logout !" class="logout" id="logout">Logout</a>';
 			}
 			else {
 			?>
