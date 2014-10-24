@@ -1,8 +1,8 @@
 <footer>
-	<p> Copyright &copy; - <?php echo date('Y'); ?></p>
+<!-- 	<p> Copyright &copy; - <?php echo date('Y'); ?></p>
 	<br>
 	<p>*** Site by RAMANA Band ***</p>
-	<div class="clearboth"></div>
+	<div class="clearboth"></div> -->
 </footer>
 		<!--*********************** MES SCRIPTS STAQUE *********************->
 
