@@ -146,10 +146,12 @@ include("inc/nav.php");
 		<br>
 		<!-- A afficher que si c'est mon compte -->
 		<?php if($_SESSION['user']["id"] == $_GET["id"]){ ?>
-			<div class=""><a href="edit_profil.php" title="Editer">Modifier</a></div>
-		<br><br>
-			<div class="red"><a href="delete_profil.php" title="Supprimer">Supprimer mon profil</a></div>
+		<div>
+			<a href="edit_profil.php" title="Modifier mon compte" class="edit">Modifier</a>
+			<a href="delete_profil.php" title="Supprimer" class="delete">Supprimer mon profil</a>
+		</div>
 		<?php } ?>
+
 	</div>
 
 

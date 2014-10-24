@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 <header>
 	<div class="connexion">
@@ -12,7 +13,11 @@
 			<?php 
 
 			if (userIsLogged()){
-				echo "<a href='account.php?id=" . $_SESSION['user']["id"] ."' class='userLogged'>Bonjour " . $_SESSION['user']['pseudo'] . " !" ;
+				
+				echo "<a href='account.php?id=" . $_SESSION['user']["id"] ."' class='userAvatar'><span><img src='" . $_SESSION['user']['image']."' class='avatar' width='30px' height='30px' /></span>";
+
+				echo "<a href='account.php?id=" . $_SESSION['user']["id"] ."' class='userLogged'><span>" . $_SESSION['user']['pseudo'] . "</span>";
+
 				echo '<a href="logout.php" title="Logout !" class="logout" id="logout">Logout</a>';
 			}
 			else {

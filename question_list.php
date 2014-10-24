@@ -15,7 +15,7 @@
 	}
 	$offset = ($page-1)*$numPerPage;
 
-	$sql = "SELECT question.id,title,score,dateCreated,pseudo,tags,	content,vues 
+	$sql = "SELECT question.id,title,score,dateCreated,image,pseudo,tags,content,vues 
 			FROM question LEFT JOIN user ON question.user_id=user.id 
 			ORDER BY question.id $direction LIMIT :offset,$numPerPage";
 			//LEFT = Tout afficher
@@ -40,36 +40,37 @@
 
 	<?php foreach ($questions as $question){ $nbAnswers=nbRep($question['id']);?>
 	<div class="topQuestionWrap">		
-		<div class="clearboth colLeft">
-			<ul class="compteurs">
-				<li><strong><?php echo $nbAnswers;?></strong> réponses</li>
-				<li><strong><?= $question['vues'];?></strong> vues</li>
-			</ul>
+		<div class="clearboth colLeft user">
+			<a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title="Infos auteur">
+				<div class="floatLeft"><img src="<?= $question['image'];?>" alt="">	</div>
+				<div class="floatLeft">
+					<h4><?= $question['pseudo'];?></h4>
+					<p class="score"><?= $question['score'];?> Pt </p>
+				</div>
+				<div class="clearboth"></div>	
+			</a>
+
+			<div class="compteurs">
+				<p><strong><?php echo $nbAnswers;?></strong> réponses</p>
+				<p><strong><?= $question['vues'];?></strong> vues</p>
+			</div>
 		</div>
 		<div class="colRight question">
-			<h3>
-				<a href="detail_question.php?id=<?= $question['id'];?>"  class="lien_question" id="<?= $question['id'];?>" title=""><?php echo $question['title']; ?></a>
-			</h3>
+			<a href="detail_question.php?id=<?= $question['id'];?>" class="lien_question" id="<?= $question['id'];?>" title="">
+				<h3><?php echo $question['title']; ?></h3>
+			</a>			
 
 			<p><?php echo substr($question['content'],0,300)."..."; ?></p>
+			<p class="date"><?= $question['dateCreated'];?></p>
+			<div class="tags"><?= $question['tags'];?></div> 
 
-			<div class="tags"> 
-				<?= $question['tags'];?>  
-			</div> 
-
-			<div class="user">
-				<ul>
-					<li class="score"><?= $question['score'];?></a></li>
-					<li><a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['pseudo'];?></a></li>
-					<li><?= $question['dateCreated'];?></a></li>
-				</ul>
-			</div>			
+			<div class="clearboth"></div>	
 		</div>
 		<div class="clearboth"></div>
 	</div>
 	<?php } ?>
 
-	<p>Affichage des questions <?php echo $offset+1; ?> à <?php echo $offset+$numPerPage; ?> sur <?php echo $totalNumber; ?><p>
+	<p><?php echo $offset+1; ?> à <?php echo $offset+$numPerPage; ?> sur <?php echo $totalNumber; ?><p>
 
 
 	<?php if($page > 1 ) { ?>

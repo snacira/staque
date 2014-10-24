@@ -65,87 +65,109 @@
 ?>
 
 <section class="container">
-	<div id="voteQ">
-		<div id="plus">
-			<span>+</span>
+	<div class="topQuestionWrap">
+		<!-- QUESTION -->	
+		<!-- colonne gauche -->
+		<div class="clearboth colLeft user">
+			<div id="voteQuestion">
+				<span id="moins"></span>	
+				<span id="pointsQ"><?php echo $question['points'];?></span>
+				<span id="plus"></span>	
+			</div>
+
+			<a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title="Infos auteur">
+				<div class="floatLeft"><img src="<?= $question['image'];?>" alt="">	</div>
+				<div class="floatLeft">
+					<h4><?= $question['pseudo'];?></h4>
+					<p class="score"><?= $question['score'];?> Pt </p>
+				</div>
+				<div class="clearboth"></div>	
+			</a>
+			<div class="compteurs">
+				<p><strong><?= $question['vues'];?></strong> vues</p>
+			</div>
 		</div>
-		<div id="pointsQ">
-			<span><?php echo $question['points'];?></span>
-		</div>
-		<div id="moins">
-		 	<span>-</span>
-		</div>		
-	</div>
+		<!-- colonne droite -->
+		<div class="colRight question">
+			<h3><?php echo $question['title'];?></h3>
 
-	<div id="statsQ">
-		<p>Posée le : <?= $question['dateCreated'];?></p>
-		<p>Vue :<?= $question['vues']+1;?> fois</p>
-	</div>
+			<p><?php echo $question['content'];?></p>
 
-	<div id="Q">
-		<h3><?php echo $question['title'];?></h3>
+			<p class="date"><?= $question['dateCreated'];?></p>
+			<div class="tags"><?= $question['tags'];?></div> 
 
-		<p><?php echo $question['content'];?></p>
-		<p><?php echo $question['tags'];?></p>
-
-		<p> Auteur : <a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title=""><?= $question['pseudo'];?></a></p>
-		<p><?php echo $question['score'];?></p>
-		<img src="img/<?php echo $question['image'];?>"/>
-		<p> Le <?php echo $question['dateCreated'];?></p>
-
-		<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0); ?>&id_q=<?php echo $id ?>">Commenter la question</a>
-		<p id="com">Commentaires de la question</p>
-		<?php foreach ($commentsQ as $commentQ){ ?>
-			<p><?php echo $commentQ['comment'];?></p>
-		<?php } ?>
-
-		<p id="rep"><?php echo $nbAnswers;?> réponses</p>
-
-		
-		<?php foreach ($answers as $answer){ ?>
-		<div id="reponses">
-			<div class="voteR">
-				<div class="plus">
-					<span>+</span>
-				</div>
-				<div class="pointsR">
-					<span>0</span>
-				</div>
-				<div class="moins">
-				 	<span>-</span>
-				</div>
-			</div>		
-			<div class="contenuRep">
-				<p><?php echo $answer['content'];?></p>
-				<p><?php echo $answer['pseudo'];?></p>
-				<p><?php echo $answer['dateCreated'];?></p>
-				<a href="comment.php?id=<?php echo $answer['id']; ?>&q_a=<?php echo (1); ?>&id_q=<?php echo $id ?>">Commenter la réponse</a>
-
-				<p>Commentaires de la réponse</p>	
-
-				<?php 
-				$sql = "SELECT comment FROM comment
-							
-							WHERE comment.questionOrAnswer_id=:id AND questionOrAnswer=1";
-
-				$stmt = $dbh->prepare($sql);
-				$stmt->bindValue(":id",$answer['id']);
-				$stmt->execute();
-				$commentsR = $stmt->fetchAll();	
-				//print_r($commentsR);
-				//die();
-
-
-				foreach ($commentsR	as $commentR) { ?>
-						<p><?php echo $commentR['comment'];?></p>
-				<?php }?>	
-
-						
-			</div>	
+			<!-- commentaires -->
+			<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0); ?>&id_q=<?php echo $id ?>" class="commentBtn">Commenter</a>
+			<div id="commentaires" class="clearboth">			
+				
+				<?php foreach ($commentsQ as $commentQ){ ?>
+					<p><?php echo $commentQ['comment'];?></p>
 				<?php } ?>
+			</div>
+		</div>
+		<div class="clearboth"></div>
+	</div>
 
-			<div id="votreReponse">
+		<!-- REPONSE -->	
 
+		<!-- colonne gauche -->
+	<h2 id="rep"><?php echo $nbAnswers;?> réponses</h2>
+	<?php foreach ($answers as $answer){ ?>
+
+	<div class="topQuestionWrap">
+		<div class="clearboth colLeft user">
+			<div id="voteQuestion">
+				<span id="moins"></span>	
+				<span id="pointsQ"><?php echo $question['points'];?></span>
+				<span id="plus"></span>	
+			</div>
+
+			<a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title="Infos auteur">
+				<div class="floatLeft"><img src="<?= $answer['image'];?>" alt="">	</div>
+				<div class="floatLeft">
+					<h4><?= $answer['pseudo'];?></h4>
+				</div>
+				<div class="clearboth"></div>	
+			</a>
+
+		</div>
+		<!-- colonne droite -->
+		<div class="colRight question">
+
+			<p><?php echo $answer['content'];?></p>
+
+			<p class="date"><?= $answer['dateCreated'];?></p>
+
+			<!-- commentaires -->
+			<div class="contenuRep">
+				<a href="comment.php?id=<?php echo $answer['id']; ?>&q_a=<?php echo (1); ?>&id_q=<?php echo $id ?>" class="commentBtn">Commenter</a>
+
+				<div id="commentaires" class="clearboth">		
+
+					<?php 
+					$sql = "SELECT comment FROM comment
+								
+								WHERE comment.questionOrAnswer_id=:id AND questionOrAnswer=1";
+
+					$stmt = $dbh->prepare($sql);
+					$stmt->bindValue(":id",$answer['id']);
+					$stmt->execute();
+					$commentsR = $stmt->fetchAll();	
+					//print_r($commentsR);
+					//die();
+
+					foreach ($commentsR	as $commentR) { ?>
+							<p><?php echo $commentR['comment'];?></p>
+					<?php }?>	
+				</div>	
+				<div class="clearboth"></div>			
+			</div>	
+		</div>
+		<div class="clearboth"></div>
+					<?php } ?>
+
+				<div id="votreReponse">
+	</div>
 <?php if(isset($_SESSION['user'])){ ?>
 		
 
@@ -185,7 +207,7 @@
 
 
 	
-		<a href="index.php" id="back">back</a>
+		<a href="index.php" id="back">Retour</a>
 
 	</div>
 

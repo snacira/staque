@@ -71,14 +71,18 @@ h3{
 .clearboth{
 	clear: both;
 }
+floatLeft{
+	float: left;
+}
 .colLeft{
 	float: left;
 	width: 15%;
 }
 .colRight{
 	float: left;
-	width: 82%;	
-	border-left: 1px solid #ccc;
+	width: 79%;	
+	/*border-left: 1px solid #ccc;*/
+	margin-left: 2px;
 	padding-left: 15px;
 }
 /************ HEADER  *******************/
@@ -88,7 +92,7 @@ header{
 	font-size: 1em;
 }
 header .connexion{
-	height: 30px;
+	height: 31px;
 	background-color: #34495E;
 	padding: 10px 20px;
 	border-bottom: 2px solid #fff;
@@ -121,17 +125,30 @@ h1::before{
 	float: right;
 	font: 200 13px Open Sans, sans-serif;
 	text-transform: uppercase;
-	margin-top: 10px;
 }
 .connexion #login a.login,
+.connexion #login a.userAvatar,
 .connexion #login a.userLogged{
 	position: relative;
 	margin-right: 20px;
+	float: left;
+	margin-top: 10px;
+}
+
+.userAvatar span .avatar{
+	margin-right: 10px;
+	border: 1px solid #fff;
+	padding: 2px;
+	position: relative;
+	left: 20px;
+	top: -13px;
 }
 
 .connexion #login a.logout,
 .connexion #login a.register {
-	position: relative;
+	position: relative;	
+	margin-top: 10px;
+	float: left;
 }
 
 .navigation .liens a:focus::after {
@@ -165,8 +182,8 @@ h1::before{
 }
 
 header .navigation{
-	line-height: 60px;
-	height: 60px;
+	line-height: 59px;
+	height: 56px;
 	clear: both;
 	padding: 0 20px;
 	font-family: PT Sans;
@@ -248,8 +265,8 @@ nav .icon{
 	-o-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
-	left: 222px;
-	top: 33px;
+	left: 219px;
+	top: 31px;
 	z-index: 1;	
 }
 nav .icon::before {
@@ -292,7 +309,7 @@ text-decoration: none;
 	background-color: #E87E04;
 	color: #fff;
 	text-align: center;
-	padding: 20px;
+	padding: 20px 327px;
 	font-family: PT Sans;
 	border-bottom: 5px solid #fff;
 }
@@ -313,7 +330,6 @@ text-decoration: none;
 }
 #presentation p{
 	font-size: 14px;
-	width: 31%;
 	margin:20px auto;
 	text-align: justify;
 
@@ -330,7 +346,7 @@ text-decoration: none;
 
 /*** home ***/
 .topQuestion h2{
-	font: 500 1.2em/1.2em Oswald;
+	font: 500 1.2em/1.2em PT Sans;
 	text-align: left;
 	border-bottom: 1px solid #414a51;
 	padding-bottom: 10px;
@@ -338,36 +354,225 @@ text-decoration: none;
 }
 
 .topQuestionWrap{
-	padding: 20px;
-	font-weight: 300;
 	margin: 30px 0;
-	background-color: #fff;
+	font: 300 15px PT Sans;
+	clear: both;
 }
-.topQuestionWrap .compteurs li{
-	margin: 15px 0;
+
+.topQuestionWrap .user{
+	background-color: #fff;
+	border-top: 2px solid #E87E04;
+	text-align: center;
+	padding: 5px;
+}
+.topQuestionWrap .user h4{
+	font: 300 15px Oswald;
+	text-transform: uppercase;
+	color: #22313F;
+}
+a.lien_user{
+	display: block;
+	height: auto;
+	border-bottom: 1px dashed #ccc;
+	padding: 8px 0;
+	color: #22313F;
+}
+a.lien_user img{
+	width: 50px;
+	float: left;
+}
+a.lien_user:hover{
+	opacity: 0.4;
+	text-decoration: none;
+}
+.topQuestionWrap .user .compteurs{
+	margin-top: 5px;
+	font: 300 15px Oswald;
+	text-transform: uppercase;
+	color: #E87E04;
+	padding: 3px 0;
+	clear: both;
+}
+.topQuestionWrap .question{
+	background-color: #fff;
+	border-top: 2px solid #F1C40F;
+	height: 100%;
+	text-align: left;
+	padding: 5px 20px;
+
 }
 .topQuestionWrap .question h3{
 	text-align: left;
-	font: 500 1em/1em PT Sans Narrow;
-	margin-bottom: 15px;
+	font: 500 2em/2em PT Sans Narrow;
+	height: 45px;
 }
 .topQuestionWrap .question p{
 	text-align: left;
 	font: 300 0.8em/0.8em Lato;
-	margin: 15px 0;
+	margin: 10px 0 15px;
+}
+.topQuestionWrap .question .date{
+	text-align: right;
+	font: 300 14px Oswald;
+	float: right;
+}
+.topQuestionWrap .question .tags{ 
+	border: 1px solid #E87E04;
+	border-radius: 3px;
+	padding: 5px;
+	display: inline-block;
+	float: left;
 }
 
-.topQuestionWrap .question .tags{ width: 70%; float: left;}
-.topQuestionWrap .question .user{ width: 30%; float: right;}
 
-/*#voteQ #plus{
-	width:20px;
-	background-color: grey;
-}*/
+/*** detail question ***/
+#voteQuestion {
+	border-bottom: 1px dashed #ccc;
+	padding: 5px;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+}
 
+#pointsQ{
+	font: 700 25px Oswald;
+	margin: 0 10px;
+}
 
+#plus, #moins{
+	height:25px; 
+	width:16px; 
+	display:inline-block; 
+	position:relative;
+	cursor: pointer;
+} 
 
+#plus:before{
+	content:''; 
+	height:0; 
+	width:0; 
+	display:block; 
+	border:15px transparent solid; 
+	border-right-width:0; 
+	border-left-color:#333; 
+	position:absolute; 
+	top:0px; 
+	left:0px;
+}
+#moins:before{
+	content:''; 
+	height:0; 
+	width:0; 
+	display:block; 
+	border:15px transparent solid; 
+	border-left-width:0; 
+	border-right-color:#333; 
+	position:absolute; 
+	top:0px; 
+	left:0px;
+}
+#commentaires{
+	background-color: #f3f2f2;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.commentBtn{
+	width: 82px;
+	height: 33px;
+	line-height: 33px;
+	text-transform: uppercase;
+	font-size: 15px;
+	text-align: center;
+	background-color: #34495E;
+	color: #fff;
+	border: none;
+	display: block;
+	border-radius: 3px;
+	padding: 0 20px;
+	clear: both;
+	float: right;
+	margin: 10px 0;
+}
+.commentBtn:hover{
+	text-decoration: none;
+	background-color: #6B7F93;
+	color: #fff;
+}
+#back, .edit, .delete{
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	text-transform: uppercase;
+	font-size: 15px;
+	text-align: center;
+	background-color: #0088cc;
+	color: #fff;
+	border: none;
+	display: block;
+	border-radius: 3px; 
+	padding: 0 20px;
+	clear: both;
+}
+.edit, .delete{
+	float: left;
+	margin: 20px;
+	clear: none;
+	color: #fff;
+	text-decoration: none;
+}
 
+.delete{
+	width: 150px;
+	background-color: #BE1515;
+	color: #fff;
+}
+#back:hover, .edit:hover{
+	text-decoration: none;
+	background-color: #28A8E8;
+	color: #fff;
+}
+.delete:hover{
+	text-decoration: none;
+	background-color: #EF3A3A;
+	color: #fff;
+}
+/*pacman*/
+/*#plus {
+	background-image: -webkit-radial-gradient(1.75em .75em, circle, transparent 10%, #2C2C2C 10%);
+	background-image: -moz-radial-gradient(1.75em .75em, circle, transparent 10%, #2C2C2C 10%);
+	background-image: -o-radial-gradient(1.75em .75em, circle, transparent 10%, #2C2C2C 10%);
+	background-image: -ms-radial-gradient(1.75em .75em, circle, transparent 10%, #2C2C2C 10%);
+	background-image: radial-gradient(1.75em .75em, circle, transparent 10%, #2C2C2C 10%);
+	border-radius: 3em 3em 0 0;
+	height: 1.5em;
+	margin-top: -1.5em;
+	position: relative;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	width: 3em;
+}
+
+#plus:after {
+	background-color: #2C2C2C;
+	border-radius: 0 0 3em 0;
+	content: '';
+	height: 1.5em;
+	left: 0em;
+	position: absolute;
+	top: 1.45em;
+
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	width: 1.5em;
+}
+*/
 
 
 h1.title{
@@ -378,7 +583,7 @@ h1.title{
 .borderbottom{
 	height: 1px;
 	width: 100%;
-	border-bottom: 1px solid grey;
+	border-bottom: 1px solid #ccc;
 }
 
 .detail{
@@ -493,6 +698,10 @@ h3.titreQuestion{
 
 #account{
 	margin-top: 30px;
+	background: #fff;
+	border-top: 2px solid #E87E04;
+	border-radius: 0 0 5px 5px;
+	padding: 20px;
 }
 
 #account p{
@@ -502,17 +711,8 @@ h3.titreQuestion{
 #account #infos span:first-child{
 	color: #f3ae73;
 }
-.delete{
-	position: relative;
-	cursor: pointer;
-}
-.delete::before{
-	content: "";
-	position: absolute;
-	width: 15px;
-	height: 15px;
-	background-color: red;
-}
+
+
 #viewport{
         width: 240px;
         overflow:hidden;
@@ -531,13 +731,10 @@ h3.titreQuestion{
 /** modifier profil **/
 img.bxsliderAvatar {
 	border: 5px solid #fff;
-	border-radius: 50%;
 	padding: 7px;
 }
 img.selected {
 	border: 5px solid #E87E04;
-	border-radius: 50%;
-	padding: 7px;
 }
 img.bxsliderAvatar:hover {
 	border: 5px solid #F1C40F;
