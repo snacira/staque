@@ -1,5 +1,6 @@
 <footer>
 	<p> Copyright &copy; - <?php echo date('Y'); ?></p>
+	<br>
 	<p>*** Site by RAMANA Band ***</p>
 </footer>
 		<!--*********************** MES SCRIPTS STAQUE *********************->
