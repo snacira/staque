@@ -218,13 +218,13 @@
 		
 		/*Ajout de points*/ 
 		$user = $_SESSION['user']['id'];
-
-		$sql = "SELECT score FROM user
-				WHERE id = $user";
-
-		$stmt = $dbh->prepare($sql);
-		$stmt->execute();
-		$score = $stmt->fetchColumn();
+										
+		$sql = "SELECT score FROM user	
+				WHERE id = $user";			
+										
+		$stmt = $dbh->prepare($sql);	
+		$stmt->execute();				
+		$score = $stmt->fetchColumn();	
 
 		$addpoint = $score +4;
 

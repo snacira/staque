@@ -117,9 +117,9 @@
 	<div class="topQuestionWrap">
 		<div class="clearboth colLeft user">
 			<div id="voteQuestion">
-				<span id="moins"></span>	
+				<a href="vote.php?type=moins&answerId=<?php echo $answer['id'];?>&id_q=<?php echo $id ?>"><span id="moins"></span></a>
 				<span id="pointsQ"><?php echo $question['points'];?></span>
-				<span id="plus"></span>	
+				<a href="vote.php?type=plus&answerId=<?php echo $answer['id'] ;?>&id_q=<?php echo $id ?>"><span id="plus"></span></a>
 			</div>
 
 			<a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title="Infos auteur">
