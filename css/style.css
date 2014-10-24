@@ -307,7 +307,7 @@ text-decoration: none;
 
 #presentation{
 	height: auto;
-	background-color: #E87E04;
+	background-color: #AAC6E0;
 	color: #fff;
 	text-align: center;
 	padding: 20px;
@@ -318,14 +318,14 @@ text-decoration: none;
 	font-weight: 700;
 	font-size: 3rem;
 	font-family: Oswald;
-	text-shadow: 2px 2px #6E0E0E;
+	text-shadow: 2px 2px #E87E04;
 	letter-spacing: 6px;
 
 }
 #presentation h3{
 	font-size: 37px;
 	text-shadow: 2px 2px #fff;
-	color: #6E0E0E;
+	color: #B3660E;
 	letter-spacing: 5px;
 	margin-top: 10px;
 }
