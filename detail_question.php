@@ -103,7 +103,7 @@
 			
 
 			<div id="commentaires" class="clearboth">
-					
+					<p><? echo "user_id"; ?></p>
 				<?php foreach ($commentsQ as $commentQ){ ?>
 					<p><?php echo $commentQ['comment'];?></p>
 				<?php } ?>

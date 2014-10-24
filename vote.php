@@ -56,7 +56,6 @@
 
 		$mysession = $_SESSION['user']['id'];
 
-		$removemypoint = $score -1;
 
 		//recupere mes points
 		$sql = "SELECT score FROM user WHERE id = $mysession";
@@ -64,7 +63,7 @@
 		$stmt->execute();
 		$myscore = $stmt->fetchColumn();
 
-		
+		$removemypoint = $myscore -1;
 
 		//retire mon point
 		$sql = "UPDATE user SET score = $removemypoint WHERE id = $mysession";
