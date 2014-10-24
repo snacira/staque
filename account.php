@@ -8,37 +8,30 @@
 	$mesInfosPerso = infosPerso($_GET['id']);
 	$myQuestions = addQuestionHistory($_GET['id']);
 	$myAnswers = addAnswerHistory($_GET['id']);
+	//$bestAnswers = chooseBestAnswer($_GET['id']);
 
 
-/*	echo "<pre>";
-	print_r ($myAnswersQuestions);
-	echo "</pre>";*/
 
-	/*Ajout de points*/
-
-/*	$voter = $_POST["voter"];
+		//VOTER POUR LA MEILLEURE REPONSE	
 
 	echo "<pre>";
 	print_r ($_POST);
 	echo "</pre>";
 
-	//je recup l'id du user
-	$user = $_GET['id'];
+	$best_answer 	= "";	
+	$id 			= "";
 
-	$sql = "SELECT score FROM user
-			WHERE id = $user";
+	if (!empty($_POST)){
 
-	$stmt = $dbh->prepare($sql);
-	$stmt->execute();
-	$score = $stmt->fetchColumn();
+		$best_answer 	= $_POST['bestAnswer']; //name dans l'input
 
-	$addpoint = $score +20;
-
-	$sql = "UPDATE user SET score = $addpoint";	
-	$stmt = $dbh->prepare($sql);
-	$stmt->bindValue(":voter", $voter);
-	$stmt->execute();*/
-
+		$sql = "UPDATE answer SET best_answer = 1
+				WHERE id = :id";
+		$stmt = $dbh->prepare($sql);	
+		$stmt->bindValue(":id", $id);		
+		$stmt->bindValue(":best_answer", $best_answer);		
+		$stmt->execute();
+	}
 
 	$avatarDefault = "perso10.jpg";
 
@@ -50,13 +43,22 @@ include("inc/nav.php");
 <section class="container">
 
 	<div id="account">
+		<h2 class="login"><?php echo $mesInfosPerso["pseudo"]; ?></h2>
 
+		<!-- A afficher que si c'est mon compte -->
+		<?php if($_SESSION['user']["id"] == $_GET["id"]){ ?>
+		<div class="boutonsCompte">
+			<a href="edit_profil.php" title="Modifier mon compte" class="edit">Modifier</a>
+			<a href="delete_profil.php" title="Supprimer" class="delete">Supprimer mon profil</a>
+		</div>
+		<?php } ?>
 
-			<img src="<?php echo $mesInfosPerso["image"]; ?>" class="bxsliderAvatar" alt="avatar" width="90" height="90">
+		<div class="clearboth colLeft avatar">
+			<img src="<?php echo $mesInfosPerso["image"]; ?>" class="avatar" alt="avatar" width="120" height="120">
+		</div>
 
-		<br>
 		<div id="infos">
-			<p class="login"><span>Pseudo : </span><span><?php echo $mesInfosPerso["pseudo"]; ?></span></p>
+			
 
 			<!-- A afficher que si c'est mon compte -->
 			<?php if($_SESSION['user']["id"] == $_GET["id"]){ ?>
@@ -87,7 +89,9 @@ include("inc/nav.php");
 			<!-- <p class="activity"><span>Connecté le : </span><span><?php echo $mesInfosPerso["dateConnected"]; ?></span></p> -->
 
 			<p class="activity"><span>Mis à jour le : </span><span><?php echo $mesInfosPerso["dateModified"]; ?></span></p>		
-
+		</div>
+	</div>
+	<div id="account">
 			<h2>Mon historique</h2>
 				<h3>Mes questions</h3>
 
@@ -97,6 +101,7 @@ include("inc/nav.php");
 				<div class="maQuestion">
 					<p>Id question : <?php echo $myQuestion["id"]; ?></p>	
 					<p><a href="detail_question.php?id=<?php echo $myQuestion['id']; ?>" title="ma question"><?php echo $myQuestion['title']; ?></a></p>
+
 				</div>	
 					<p>*** Les réponses :</p>
 					<?php 
@@ -104,16 +109,19 @@ include("inc/nav.php");
 					$myAnswersQuestions = addAnswerOfQuestionHistory($myQuestion["id"]);
 
 					?>
-						<form method="POST">
-							<?php foreach ($myAnswersQuestions as $myAnswersQuestion) { ?>
-							<label for="voter">
-								<input type="radio" name="voter" value="<?php echo $myAnswersQuestion['id'];  ?>">
-								<span><?php echo $myAnswersQuestion['content']; ?></span>
-							</label>
-							<?php } ?>
-							<input type="submit" name="" value="Valider">
-						</form>
 
+					<!-- VOTER POUR LA MEILLEURE REPONSE -->
+					<form method="POST">
+						<?php foreach ($myAnswersQuestions as $myAnswersQuestion) { ?>
+						<label for="bestAnswer">
+
+							<input type="checkbox" name="bestAnswer" class="floatLeft" value="<?php echo $myAnswersQuestion['id'];  ?>">
+							<span  class="floatLeft"><?php echo $myAnswersQuestion['content']; ?></span>
+						</label>
+						<?php } ?>
+						<input type="submit" name="" value="Valider">
+					</form>
+					<p><?php echo $_POST["content"]; ?></p>
 				<br>
 				<?php } 
 				}else {?>
@@ -143,14 +151,8 @@ include("inc/nav.php");
 
 
 		</div>
-		<br>
-		<!-- A afficher que si c'est mon compte -->
-		<?php if($_SESSION['user']["id"] == $_GET["id"]){ ?>
-		<div>
-			<a href="edit_profil.php" title="Modifier mon compte" class="edit">Modifier</a>
-			<a href="delete_profil.php" title="Supprimer" class="delete">Supprimer mon profil</a>
-		</div>
-		<?php } ?>
+
+
 
 	</div>
 

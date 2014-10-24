@@ -97,9 +97,13 @@
 			<div class="tags"><?= $question['tags'];?></div> 
 
 			<!-- commentaires -->
+
+				<!-- bouton commenter -->
 			<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0); ?>&id_q=<?php echo $id ?>" class="commentBtn">Commenter</a>
-			<div id="commentaires" class="clearboth">			
-				
+			
+
+			<div id="commentaires" class="clearboth">
+					
 				<?php foreach ($commentsQ as $commentQ){ ?>
 					<p><?php echo $commentQ['comment'];?></p>
 				<?php } ?>
@@ -142,9 +146,9 @@
 			<div class="contenuRep">
 				<a href="comment.php?id=<?php echo $answer['id']; ?>&q_a=<?php echo (1); ?>&id_q=<?php echo $id ?>" class="commentBtn">Commenter</a>
 
-				<div id="commentaires" class="clearboth">		
+	
 
-					<?php 
+				<?php 
 					$sql = "SELECT comment FROM comment
 								
 								WHERE comment.questionOrAnswer_id=:id AND questionOrAnswer=1";
@@ -155,11 +159,15 @@
 					$commentsR = $stmt->fetchAll();	
 					//print_r($commentsR);
 					//die();
-
-					foreach ($commentsR	as $commentR) { ?>
-							<p><?php echo $commentR['comment'];?></p>
+				
+					if(!empty($commentsR)){ 
+				?>
+				<div id="commentaires" class="clearboth">	
+					<?php foreach ($commentsR	as $commentR) { ?>
+						<p><?php echo $commentR['comment'];?></p>
 					<?php }?>	
 				</div>	
+				<?php } ?>
 				<div class="clearboth"></div>			
 			</div>	
 		</div>

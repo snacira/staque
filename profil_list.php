@@ -8,7 +8,7 @@
 
 	$profils = getProfilList();
 	
-	$avatarDefault = "perso10.jpg";
+	$avatarDefault = "img/perso10.jpg";
 
 	include("inc/header.php");
 	include("inc/nav.php");
@@ -25,11 +25,11 @@
 				<a href="#" title="">
 					<?php if(empty($profil["image"])) { ?>
 
-						<img src="img/<?php echo $avatarDefault; ?>" alt="avatar" width="48" height="48">
+						<img src="<?php echo $avatarDefault; ?>" alt="avatar" width="48" height="48">
 
 					<?php } else { ?>
 
-						<img src="img/<?php echo $profil["image"]; ?>" alt="avatar" width="48" height="48">
+						<img src="<?php echo $profil["image"]; ?>" alt="avatar" width="48" height="48">
 
 					<?php } ?>
 				</a>
