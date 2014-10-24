@@ -62,8 +62,9 @@
 
 			<p><?php echo substr($question['content'],0,300)."..."; ?></p>
 			<p class="date"><?= $question['dateCreated'];?></p>
-			<div class="tags"><?= $question['tags'];?></div> 
-
+			<?php if(!empty($question['tags'])){ ?>
+				<div class="tags"><?= $question['tags'];?></div> 
+			<?php } ?>
 			<div class="clearboth"></div>	
 		</div>
 		<div class="clearboth"></div>

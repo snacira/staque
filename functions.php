@@ -228,7 +228,7 @@
 
 		$addpoint = $score +4;
 
-		$sql = "UPDATE user SET score = $addpoint";
+		$sql = "UPDATE user SET score = score+4";
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 		/* fin de l'ajout*/
@@ -305,22 +305,22 @@
 
 
 	/*************** VOTER / choisir la meilleure réponse *******************/
-	function chooseBestAnswer(){
+	function chooseBestAnswer($id){
 		global $dbh;
 
 		/*Ajout de points*/ 
 		$user = $_SESSION['user']['id'];
 
-		$sql = "SELECT score FROM user
-				WHERE id = $user";
+/*		$sql = "SELECT score FROM user
+				WHERE id = $user";*/
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 		$score = $stmt->fetchColumn();
 
-		$addpoint = $score +20;
+		//$addpoint = $score +20;
 
-		$sql = "UPDATE user SET score = $addpoint";
+		$sql = "UPDATE best_answer FROM answer";
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 
