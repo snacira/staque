@@ -69,11 +69,6 @@
 		<!-- QUESTION -->	
 		<!-- colonne gauche -->
 		<div class="clearboth colLeft user">
-			<div id="voteQuestion">
-				<span id="moins"></span>	
-				<span id="pointsQ"><?php echo $question['points'];?></span>
-				<span id="plus"></span>	
-			</div>
 
 			<a href="account.php?id=<?= $question['id'];?>"  class="lien_user" title="Infos auteur">
 				<div class="floatLeft"><img src="<?= $question['image'];?>" alt="">	</div>
@@ -94,20 +89,23 @@
 			<p><?php echo $question['content'];?></p>
 
 			<p class="date"><?= $question['dateCreated'];?></p>
-			<div class="tags"><?= $question['tags'];?></div> 
+			<?php if(!empty($question['tags'])){ ?>
+				<div class="tags"><?= $question['tags'];?></div> 
+			<?php } ?>
 
 			<!-- commentaires -->
 
 				<!-- bouton commenter -->
 			<a href="comment.php?id=<?php echo $id; ?>&q_a=<?php echo (0); ?>&id_q=<?php echo $id ?>" class="commentBtn">Commenter</a>
 			
-
-			<div id="commentaires" class="clearboth">
+			<?php if(!empty($commentsQ)){ 			
 					
-				<?php foreach ($commentsQ as $commentQ){ ?>
-					<p><?php echo $commentQ['comment'];?></p>
-				<?php } ?>
-			</div>
+				foreach ($commentsQ as $commentQ){ ?>
+				<div id="commentaires" class="clearboth">
+					<p class="commentText"><?php echo $commentQ['comment'];?></p>
+				</div>			
+			<?php }
+			} ?>
 		</div>
 		<div class="clearboth"></div>
 	</div>
@@ -160,14 +158,14 @@
 					//print_r($commentsR);
 					//die();
 				
-					if(!empty($commentsR)){ 
-				?>
-				<div id="commentaires" class="clearboth">	
-					<?php foreach ($commentsR	as $commentR) { ?>
-						<p><?php echo $commentR['comment'];?></p>
-					<?php }?>	
-				</div>	
-				<?php } ?>
+					if(!empty($commentsR)){ 	
+					
+						foreach ($commentsR as $commentR){ ?>
+							<div id="commentaires" class="clearboth">
+								<p><?php echo $commentR['comment'];?></p>
+							</div>
+					<?php }
+					} ?>
 				<div class="clearboth"></div>			
 			</div>	
 		</div>
@@ -180,7 +178,7 @@
 		
 
 				
-				<p>Votre réponse</p>
+				<h4>Répondre</h4>
 				<form method="POST">								
 					<label class="questionarea">
 						<textarea name="content" placeholder="Répondre a la question"></textarea>

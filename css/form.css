@@ -7,7 +7,12 @@ form h3{
 form .field_container{
 	text-align: center;
 }
-
+.field_container span{
+	width:100px;
+	text-align: right;
+	margin-right: 20px;
+	display: inline-block;
+}
 .field_container input{
 	width:400px;
 	height: 50px;

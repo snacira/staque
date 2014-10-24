@@ -35,9 +35,9 @@
 		</div>
 
 		<div id="recherche">
-			<div class="icon"></div>
+			
 			<form action="recherche.php" id="recherche_form" method="POST" novalidate>
-			<input type="search" name="search" value="" placeholder="Recherche">
+			<input type="search" name="search" value="" placeholder="Recherche"><span class="icon"></span>
 			</form>	
 		</div>
 	</nav>
